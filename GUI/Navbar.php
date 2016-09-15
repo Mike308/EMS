@@ -8,19 +8,110 @@
 
 class Navbar {
 
-    public function Navbar($permission){
+    public function Navbar($item_index,$permission){
 
-        ?> <ul class="nav navbar-nav">
-           <li class="active"><a href="index.php">Strona główna</a></li>
-           <li><a href="temp_chart.php">Temperatura w budynku</a></li>
-           <li><a href="water_consumption.php">Zużycie wody</a></li>
-           <li><a href="air_quality.php">Jakość powietrza</a> </li>
-           <li><a href="energy_consumption.php">Zużycie energii elektrycznej</a></li>
-           <?php   if(isset($_SESSION['success'])) { if($_SESSION['user'] > 0) { ?> <li><a href="admin_panel.php">Panel Administracyjny</a></li> <?php }}?>
-           <?php   if(isset($_SESSION['success'])) { if($_SESSION['user'] > 0) { ?> <li><a href="slot_setup_panel.php">Ustawienia Termometrów</a></li> <?php }}?>
-           <?php   if(isset($_SESSION['success'])) { ?> <li><a href="logout.php">Wyloguj</a></li> <?php } else {?> <li><a href="login.php">Logowanie</a></li> <?php }?>
-</ul>
+        ?>
+        <div class="navbar navbar-default">
+           <div class="navbar-header">
+               <div class="navbar-collapse">
+
+                   <ul class="nav navbar-nav">
+                       <?php $this->display_items($item_index,$permission); ?>
+                   </ul>
+
+               </div>
+
+           </div>
+        </div>
+
+
+
+
+        <?php
 
     }
 
+    private  function display_item($is_active,$title,$url){
+
+        if($is_active==true){
+
+            ?> <li class="active"><a href=<?php echo $url;?>><?php echo $title;?></a></li> <?php
+        }
+        else{
+
+            ?>  <li><a href="<?php echo $url;?>"><?php echo $title;?></a></li> <?php
+        }
+
+    }
+
+    private function display_login($item,$permission){
+
+        if($permission==0){
+
+            if($item=="login.php"){
+
+                ?> <li class="active"><a href="login.php">Logowanie</a></li> <?php
+            }
+            else{
+
+                ?> <li><a href="login.php">Logowanie</a> </li><?php
+            }
+
+        }else{
+
+            ?> <li><a href="logout.php">Wyloguj się</a></li><?php
+
+        }
+
+    }
+
+    
+
+
+
+
+
+    private function display_items($item, $permission){
+
+
+        $titles = array(
+
+            "index.php" => "Strona główna",
+            "power_measurement.php"=>"Pomiar mocy"
+
+
+        );
+
+        foreach ($titles as $url=>$title){
+
+            if($item==$url){
+
+                $this->display_item(true,$title,$url);
+            }
+            else{
+
+                $this->display_item(false,$title,$url);
+            }
+
+
+
+
+        }
+        $this->display_login($item,$permission);
+
+    }
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
