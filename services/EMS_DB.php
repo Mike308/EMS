@@ -102,6 +102,62 @@ class EMS_DB{
 
     }
 
+    public function simple_query($sql,$id){
+
+        try{
+
+            $st = $this->cn->prepare($sql);
+            $st->bindParam(":id",$id);
+            $st->execute();
+
+            while ($row = $st->fetch()){
+
+                $data[] = array($row[0],$row[1]);
+
+            }
+
+
+            return $data;
+
+
+
+        }catch (PDOException $e){
+
+
+
+        }
+
+
+    }
+
+    public function prepare_measurement_of_power(){
+
+        try{
+
+            $st = $this->cn->prepare("select distinct concat('L',phase_no),phase_no from power_measurement");
+            $st->execute();
+
+            while($row = $st->fetch()){
+
+                $data[] = array('name'=>$row[0], 'data'=>$this->simple_query("select time,result from power_measurement where phase_no=:id",$row[1]));
+
+
+
+            }
+
+            return $data;
+
+
+
+        }catch (PDOException $e){
+
+            echo $e;
+
+        }
+
+
+    }
+
 
 
 

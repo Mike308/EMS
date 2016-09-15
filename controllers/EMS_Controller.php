@@ -27,5 +27,11 @@ if($cmd==0){
     $result = json_encode($ems_db->last_measurement_of_current($phase_no),JSON_NUMERIC_CHECK);
     echo  "{".'"data"'.":"." ".$result."}";
 
+}else if($cmd==2){
+
+    $result = json_encode($ems_db->prepare_measurement_of_power(),JSON_NUMERIC_CHECK);
+    echo $result;
+
+
 }
 
