@@ -7,11 +7,14 @@
  */
 
 include "../services/EMS_DB.php";
+include "../config/config.php";
 
 $phase_no = $_GET['phase_no'];
 $cmd = $_GET['cmd'];
 
-$ems_db = new EMS_DB("root","","localhost");
+
+
+$ems_db = new EMS_DB(user_db,password,localhost);
 $ems_db->open_db();
 
 
@@ -33,7 +36,10 @@ if($cmd==0){
    // echo  "{".'"data"'.":"." ".$result."}";
     echo $result;
     
-
-
+}else if($cmd==3){
+    
+    
+    
 }
+
 
