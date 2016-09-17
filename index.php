@@ -7,6 +7,10 @@
  */
 
 include 'GUI\Navbar.php';
+include 'services\Auth_Gate.php';
+$auth = new Auth_Gate();
+$auth->start_session();
+$permission = $auth->get_user_prem();
 
 ?>
 
@@ -32,7 +36,7 @@ include 'GUI\Navbar.php';
         google.setOnLoadCallback(function(){
 
             drawChart("L1","controllers/EMS_Controller.php?cmd=0&phase_no=1","l1_div");
-            
+            drawChart("L2","controllers/EMS_Controller.php?cmd=0&phase_no=2","l2_div");
 
 
         });
@@ -82,131 +86,7 @@ include 'GUI\Navbar.php';
 
         }
 
-        var cnt = 0;
 
-        $(function () {
-            $('#container').highcharts({
-
-                title: {
-                    text: 'Średnia temperatur',
-                    x: -20 //center
-                },
-
-                yAxis: {
-                    title: {
-                        text: 'temperatura (°C)'
-                    },
-                    plotLines: [{
-                        value: 0,
-                        width: 1,
-                        color: '#808080'
-                    }]
-                },
-
-                tooltip: {
-                    valueSuffix: 'kWh'
-                },
-
-                legend: {
-                    enabled: false
-                },
-
-
-
-                xAxis: {
-                    categories: []
-
-                },
-                series:{ []
-                }
-            });
-
-
-            // the button action
-            cnt = 0;
-            setInterval(function() {
-
-
-
-
-
-                var data_from_json = [];
-                var time_from_json = [];
-                var urls = ['controllers/EMS_Controller?cmd=2','controllers/EMS_Controller?cmd=2']
-                var chart_name = ['Moc','Prąd'];
-                var chart_title = ['Moc','Prąd'];
-
-                var chart_type = ['line','line'];
-                var chart_y_axis_title = ['W','kWh','m3','ppm','PLN'];
-
-                if(cnt==0 || cnt==1) {
-
-
-                    // console.log("Adres: "+cnt);
-
-                    $.getJSON(urls[cnt], function (dane) {
-
-
-
-
-
-                        var chart = $('#container').highcharts();
-
-
-                        chart.title.text = chart_title[cnt];
-                        options.xAxis.categories = dane[0]['data'];
-                        for(var i=1; i<3; i++){
-
-                            options.series.push(dane[i]);
-
-                        }
-
-
-
-
-
-
-//                        if(cnt==4){
-//
-//                            chart.series[0].options.colorByPoint = true;
-//
-//
-//                        }else{
-//
-//                            chart.series[0].options.colorByPoint = false;
-//
-//                    }
-                       // chart.series[0].options.type = chart_type[cnt];
-
-///                        chart.series[0].update(chart.series[0].options);
-
-                        $('#container').highcharts().redraw();
-                      //  cnt++;
-
-
-
-
-                    });
-
-                }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            },2000);
 
     </script>
 
@@ -215,16 +95,21 @@ include 'GUI\Navbar.php';
 
 <body>
 <h2> Internetowy System Monitorowania Instalacji </h2>
-<?php $nav = new Navbar("index.php",0);?>
+<?php $nav = new Navbar("index.php",$permission);?>
 
     <div class="container">
 
-<!--        <table>-->
-<!--            <th> Moc L1 </th>-->
-<!--            <th> Moc L2 </th>-->
-<!--            <tr> <div id = "l1_div"> </div>  </tr>-->
-<!--            <tr> <div id = "l2_div"> </div>  </tr>-->
-<!--        </table>-->
+        <table align="center">
+           <tr>
+               <th style="text-align: center"> Moc L1 </th>
+               <th style="text-align: center"> Moc L2 </th>
+           </tr>
+
+            <tr>
+                <td align="center"> <div id = "l1_div"> </div> </td>
+                <td align="center"> <div id = "l2_div"> </div> </td>
+            </tr>
+        </table>
 
     </div>
 
