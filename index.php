@@ -35,8 +35,8 @@ $permission = $auth->get_user_prem();
         google.load("visualization", "1", {packages:["gauge"]});
         google.setOnLoadCallback(function(){
 
-            drawChart("L1","controllers/EMS_Controller.php?cmd=0&phase_no=1","l1_div");
-            drawChart("L2","controllers/EMS_Controller.php?cmd=0&phase_no=2","l2_div");
+            drawChart("L1","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=1","l1_div");
+            drawChart("L2","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=2","l2_div");
 
 
         });

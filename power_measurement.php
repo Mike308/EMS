@@ -139,7 +139,7 @@ $permission = $auth->get_user_prem();
             var chart1,
                 chart2;
 
-            $.getJSON('controllers/EMS_Controller.php?cmd=2&phase_no=0', function(data){
+            $.getJSON('controllers/EMS_Chart_Controller.php?cmd=1', function(data){
 
                 // chart 1
                 options.chart.renderTo = 'power';

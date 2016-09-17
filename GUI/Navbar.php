@@ -77,7 +77,8 @@ class Navbar {
         $titles = array(
 
             "index.php" => "Strona główna",
-            "power_measurement.php"=>"Pomiar mocy"
+            "power_measurement.php"=>"Pomiar mocy",
+            "current_measurement.php"=>"Pomiar prądu"
 
 
         );

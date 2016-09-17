@@ -6,6 +6,8 @@
  * Time: 19:49
  */
 
+
+
 class EMS_DB{
 
 
@@ -199,6 +201,37 @@ class EMS_DB{
             while($row = $st->fetch()){
 
              $data[] = array('name'=>$row[0], 'data'=>$this->simple_query("select result from power_measurement where phase_no=:id",$row[1]));
+
+
+
+            }
+
+            return $data;
+
+
+
+        }catch (PDOException $e){
+
+            echo $e;
+
+        }
+
+
+    }
+
+    public function prepare_measurement_of_current(){
+
+        try{
+
+            $st = $this->cn->prepare("select distinct  concat('L',phase_no),phase_no from current_measurement");
+            $st->execute();
+
+
+            $data[] = array('name'=>'time', 'data'=>$this->simple_query("select distinct time from current_measurement order by time asc",null));
+
+            while($row = $st->fetch()){
+
+                $data[] = array('name'=>$row[0], 'data'=>$this->simple_query("select result from current_measurement where phase_no=:id",$row[1]));
 
 
 

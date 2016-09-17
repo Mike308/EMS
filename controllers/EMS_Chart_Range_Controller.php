@@ -34,7 +34,7 @@ if($cmd==1){
 
 }else if($cmd==2){
 
-    $result = json_encode($ems_db->prepare_measurement_of_power_from_range($start,$end),JSON_NUMERIC_CHECK);
+    $result = json_encode($ems_db->prepare_measurement_of_current_from_range($start,$end),JSON_NUMERIC_CHECK);
     echo $result;
 
 
