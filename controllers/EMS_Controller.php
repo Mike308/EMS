@@ -30,7 +30,9 @@ if($cmd==0){
 }else if($cmd==2){
 
     $result = json_encode($ems_db->prepare_measurement_of_power(),JSON_NUMERIC_CHECK);
+   // echo  "{".'"data"'.":"." ".$result."}";
     echo $result;
+    
 
 
 }

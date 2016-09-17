@@ -107,17 +107,25 @@ class EMS_DB{
         try{
 
             $st = $this->cn->prepare($sql);
-            $st->bindParam(":id",$id);
+            if($id!=null){
+
+                $st->bindParam(":id",$id);
+
+            }
             $st->execute();
 
             while ($row = $st->fetch()){
 
-                $data[] = array($row[0],$row[1]);
+
+
+               $result[] =  $row[0];
 
             }
 
+            return $result;
 
-            return $data;
+
+
 
 
 
@@ -134,12 +142,15 @@ class EMS_DB{
 
         try{
 
-            $st = $this->cn->prepare("select distinct concat('L',phase_no),phase_no from power_measurement");
+            $st = $this->cn->prepare("select distinct  concat('L',phase_no),phase_no from power_measurement");
             $st->execute();
+
+
+            $data[] = array('name'=>'time', 'data'=>$this->simple_query("select distinct time from power_measurement order by time asc",null));
 
             while($row = $st->fetch()){
 
-                $data[] = array('name'=>$row[0], 'data'=>$this->simple_query("select time,result from power_measurement where phase_no=:id",$row[1]));
+             $data[] = array('name'=>$row[0], 'data'=>$this->simple_query("select result from power_measurement where phase_no=:id",$row[1]));
 
 
 

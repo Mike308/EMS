@@ -77,15 +77,137 @@ include 'GUI\Navbar.php';
 
                     });
 
-
-
                 });
-
-
-
             },1000);
 
         }
+
+        var cnt = 0;
+
+        $(function () {
+            $('#container').highcharts({
+
+                title: {
+                    text: 'Średnia temperatur',
+                    x: -20 //center
+                },
+
+                yAxis: {
+                    title: {
+                        text: 'temperatura (°C)'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+
+                tooltip: {
+                    valueSuffix: 'kWh'
+                },
+
+                legend: {
+                    enabled: false
+                },
+
+
+
+                xAxis: {
+                    categories: []
+
+                },
+                series:{ []
+                }
+            });
+
+
+            // the button action
+            cnt = 0;
+            setInterval(function() {
+
+
+
+
+
+                var data_from_json = [];
+                var time_from_json = [];
+                var urls = ['controllers/EMS_Controller?cmd=2','controllers/EMS_Controller?cmd=2']
+                var chart_name = ['Moc','Prąd'];
+                var chart_title = ['Moc','Prąd'];
+
+                var chart_type = ['line','line'];
+                var chart_y_axis_title = ['W','kWh','m3','ppm','PLN'];
+
+                if(cnt==0 || cnt==1) {
+
+
+                    // console.log("Adres: "+cnt);
+
+                    $.getJSON(urls[cnt], function (dane) {
+
+
+
+
+
+                        var chart = $('#container').highcharts();
+
+
+                        chart.title.text = chart_title[cnt];
+                        options.xAxis.categories = dane[0]['data'];
+                        for(var i=1; i<3; i++){
+
+                            options.series.push(dane[i]);
+
+                        }
+
+
+
+
+
+
+//                        if(cnt==4){
+//
+//                            chart.series[0].options.colorByPoint = true;
+//
+//
+//                        }else{
+//
+//                            chart.series[0].options.colorByPoint = false;
+//
+//                    }
+                       // chart.series[0].options.type = chart_type[cnt];
+
+///                        chart.series[0].update(chart.series[0].options);
+
+                        $('#container').highcharts().redraw();
+                      //  cnt++;
+
+
+
+
+                    });
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            },2000);
+
     </script>
 
 </head>
@@ -97,7 +219,12 @@ include 'GUI\Navbar.php';
 
     <div class="container">
 
-        <div id = "l1_div">  </div>
+<!--        <table>-->
+<!--            <th> Moc L1 </th>-->
+<!--            <th> Moc L2 </th>-->
+<!--            <tr> <div id = "l1_div"> </div>  </tr>-->
+<!--            <tr> <div id = "l2_div"> </div>  </tr>-->
+<!--        </table>-->
 
     </div>
 
