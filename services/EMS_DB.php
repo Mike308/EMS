@@ -12,7 +12,8 @@ class EMS_DB{
     /**
      * @var PDO
      */
-    private $cn,$user,$password,$url;
+    private $cn, $user,$password,$url;
+
 
 
     /**
@@ -138,6 +139,53 @@ class EMS_DB{
 
     }
 
+    /**
+     * @param $sql
+     * @param $params
+     * @return array
+     */
+    public function query($sql, $params){
+
+        try{
+
+            $st = $this->cn->prepare($sql);
+
+            foreach ($params as $parameter=>$bind){
+
+
+
+                $st->bindValue($parameter,$bind);
+
+            }
+
+            $st->execute();
+
+            while ($row = $st->fetch()){
+
+
+
+                $result[] =  $row[0];
+
+            }
+
+            return $result;
+
+
+
+
+
+
+        }catch (PDOException $e){
+
+
+
+        }
+
+
+    }
+
+
+
     public function prepare_measurement_of_power(){
 
         try{
@@ -168,6 +216,75 @@ class EMS_DB{
 
 
     }
+
+    /**
+     * @param $start
+     * @param $end
+     * @return array
+     */
+    public function prepare_measurement_of_power_from_range($start, $end){
+
+        try{
+
+            $st = $this->cn->prepare("select distinct  concat('L',phase_no),phase_no from power_measurement");
+            $st->execute();
+
+
+            $data[] = array('name'=>'time', 'data'=>$this->query("select distinct time from power_measurement where time between :start and :end  order by time asc",array(':start'=>$start,':end'=>$end)));
+
+            while($row = $st->fetch()){
+
+                $data[] = array('name'=>$row[0], 'data'=>$this->query("select result from power_measurement where phase_no=:id and time between :start and :end",array(':id'=>$row[1], ':start'=>$start,':end'=>$end)));
+
+
+
+            }
+
+            return $data;
+
+
+
+        }catch (PDOException $e){
+
+            echo $e;
+
+        }
+
+
+    }
+
+    public function prepare_measurement_of_current_from_range($start, $end){
+
+        try{
+
+            $st = $this->cn->prepare("select distinct  concat('L',phase_no),phase_no from current_measurement");
+            $st->execute();
+
+
+            $data[] = array('name'=>'time', 'data'=>$this->query("select distinct time from current_measurement where time between :start and :end  order by time asc",array(':start'=>$start,':end'=>$end)));
+
+            while($row = $st->fetch()){
+
+                $data[] = array('name'=>$row[0], 'data'=>$this->query("select result from current_measurement where phase_no=:id and time between :start and :end",array(':id'=>$row[1], ':start'=>$start,':end'=>$end)));
+
+
+
+            }
+
+            return $data;
+
+
+
+        }catch (PDOException $e){
+
+            echo $e;
+
+        }
+
+
+    }
+
+
 
 
 
