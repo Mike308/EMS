@@ -23,6 +23,7 @@ $permission = $auth->get_user_prem();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <meta charset="utf-8">
     <title>ISMIE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -159,6 +160,21 @@ $permission = $auth->get_user_prem();
         });
 
 
+     var app = angular.module('myApp',[]);
+
+            app.controller('tabelController',function ($scope,$http) {
+
+                $http.get('controllers/EMS_Table_Controller.php?cmd=1')
+                    .then(function (response) {
+
+                        $scope.phases = response.data.power
+                        
+                    });
+
+            });
+
+
+
 
     </script>
 
@@ -183,7 +199,21 @@ $permission = $auth->get_user_prem();
         </tr>
     </table>
 
+
+
     <div id = "power">  </div>
+
+    <div ng-app = "myApp" ng-controller="tableController">
+
+        <table>
+            <tr ng-repeat="x in phases" >
+                <th> {{x.L1}} </th>
+            </tr>
+        </table>
+
+
+
+    </div>
 
 </div>
 

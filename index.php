@@ -37,6 +37,8 @@ $permission = $auth->get_user_prem();
 
             drawChart("L1","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=1","l1_div");
             drawChart("L2","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=2","l2_div");
+            drawChart("L3","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=3","l3_div");
+
 
 
         });
@@ -103,11 +105,14 @@ $permission = $auth->get_user_prem();
            <tr>
                <th style="text-align: center"> Moc L1 </th>
                <th style="text-align: center"> Moc L2 </th>
+               <th style="text-align: center"> Moc L3 </th>
+
            </tr>
 
             <tr>
                 <td align="center"> <div id = "l1_div"> </div> </td>
                 <td align="center"> <div id = "l2_div"> </div> </td>
+                <td align="center"> <div id = "l3_div"> </div> </td>
             </tr>
         </table>
 
