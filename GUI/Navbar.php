@@ -65,6 +65,22 @@ class Navbar {
 
     }
 
+    private function display_admin_panel($item,$permission){
+
+        if($item="admin_panel.php"){
+
+            ?> <li><a href="admin_panel.php"> Panel Administracyjny  </a> </li> <?php
+
+        }else {
+
+            ?> <li><a href="admin_panel.php"> Panel Admistracyjny </a> </li> <?php
+
+        }
+
+
+    }
+
+
     
 
 
@@ -79,6 +95,7 @@ class Navbar {
             "index.php" => "Strona główna",
             "power_measurement.php"=>"Pomiar mocy",
             "current_measurement.php"=>"Pomiar prądu"
+
 
 
         );
@@ -99,6 +116,13 @@ class Navbar {
 
         }
         $this->display_login($item,$permission);
+
+        if($permission==1){
+
+            $this->display_admin_panel($item,$permission);
+
+
+        }
 
     }
 

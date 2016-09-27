@@ -21,9 +21,10 @@ $ems_db->open_db();
 
 if($cmd==1){
 
-    $result = json_encode($ems_db->prepare_measurement_of_power(),JSON_NUMERIC_CHECK);
-     echo  "{".'"power"'.":"." ".$result."}";
-    echo $result;
+    $result = json_encode($ems_db->prepare_measurement_of_power_from_range_for_table('2016-09-17 01:03:55','2016-09-17 15:03:55'),JSON_NUMERIC_CHECK);
+
+    echo  "{".'"power"'.":"." ".$result."}";
+
 
 }else if($cmd==2){
 
