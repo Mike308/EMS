@@ -79,6 +79,8 @@ class EMS_DB{
 
     }
 
+    
+
     public function last_measurement_of_current($phase_no){
 
         try{
@@ -185,51 +187,6 @@ class EMS_DB{
 
 
     }
-
-
-    public function json_query($sql, $params){
-
-        try{
-
-            $st = $this->cn->prepare($sql);
-
-            foreach ($params as $parameter=>$bind){
-
-
-
-                $st->bindValue($parameter,$bind);
-
-            }
-
-            $st->execute();
-
-            while ($row = $st->fetch()){
-
-
-
-                $result[$row[0]] =  $row[2];
-                $data[] = $result;
-
-            }
-
-            return $data;
-
-
-
-
-
-
-        }catch (PDOException $e){
-
-
-
-        }
-
-
-    }
-
-
-
 
 
 
@@ -367,30 +324,20 @@ class EMS_DB{
 
         try{
 
-            $st_time = $this->cn->prepare("select time from power_measurement where time between :start and :end");
-
-            $st_time->bindValue(":start",$start);
-            $st_time->bindValue(":end",$end);
-
-            $st_time->execute();
-
-            while ( $time_row = $st_time->fetch()){
-
-                
-
-               $result[] = $this->json_query("select concat('L',phase_no),phase_no,result from power_measurement where time = :time",array(":time"=>$time_row[0]));
 
 
 
 
-            }
+            $i = 0;
+            $st = $this->cn->prepare("select DISTINCT concat('L',phase_no) name,phase_no,result,time from power_measurement where time between :start and :end order by time asc");
+            $st->bindValue(":start",$start);
+            $st->bindValue(":end",$end);
+            $st->execute();
+            $result = $st->fetchAll(PDO::FETCH_ASSOC);
+
+
 
             return $result;
-
-
-
-
-
             
             
 

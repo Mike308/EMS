@@ -116,7 +116,7 @@ $permission = $auth->get_user_prem();
 
 
                                       <div class="form-group">
-                                          <input type="submit" class="btn btn-primary" value="Ustaw stawkę">
+                                          <input type="submit" class="btn btn-primary" value="Pokaż Statystyki">
                                       </div>
                                   </form>
 

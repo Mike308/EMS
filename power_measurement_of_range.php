@@ -32,7 +32,7 @@ $end = $_GET['end'];
     <link rel="stylesheet" href="darkly/theme/usebootstrap.css">
     <script src="bootstrap/html5shiv.js"></script>
     <script src="bootstrap/respond.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type="text/javascript">
 
 
@@ -43,6 +43,9 @@ $end = $_GET['end'];
 
         $ (function () {
             var options = {
+
+
+
                 chart: {
                     type: 'line',
                     marginRight: 130,
@@ -81,11 +84,14 @@ $end = $_GET['end'];
                     y: 100,
                     borderWidth: 0
                 },
+                scrollbar: {
+                    enabled: true
+                },
                 series: []
             };
 
             var chart1,
-                chart2;
+
 
             $.getJSON('controllers/EMS_Chart_Range_Controller.php?cmd=1&start=<?php echo $start.'&end='.$end?>', function(data){
 
@@ -106,6 +112,16 @@ $end = $_GET['end'];
             });
         });
 
+        var app = angular.module('myApp', []);
+        app.controller('power', function($scope, $http) {
+            $http.get("controllers/EMS_Table_Controller.php?cmd=1")
+                .then(function (response) {$scope.names = response.data.power;});
+        });
+
+        $scope.names = {};
+
+
+
 
 
     </script>
@@ -119,21 +135,34 @@ $end = $_GET['end'];
 
 <div class="container">
 
-    
 
-    <table align="center">
-        <tr>
-            <th style="text-align: center"> Moc L1 </th>
-            <th style="text-align: center"> Moc L2 </th>
-        </tr>
 
-        <tr>
-            <td align="center"> <div id = "l1_div"> </div> </td>
-            <td align="center"> <div id = "l2_div"> </div> </td>
-        </tr>
-    </table>
 
-    <div id = "power">  </div>
+
+    <div id = "power" style="padding-bottom: 5%">  </div>
+
+    <div ng-app="myApp" ng-controller="power">
+
+       Szukaj po fazie: <input type="text" class="form-control" ng-model="search.name">
+
+
+        <table class="table table-striped table-hover ">
+
+            <tr>
+                <th> Faza </th>
+                <th> Pobór mocy </th>
+                <th> Data i czas pomiaru </th>
+
+            </tr>
+
+            <tr ng-repeat="x in names | filter: search">
+                <td>{{ x.name }}</td>
+                <td>{{ x.result }}</td>
+                <td>{{x.time}}</td>
+            </tr>
+        </table>
+
+    </div>
 
 </div>
 
