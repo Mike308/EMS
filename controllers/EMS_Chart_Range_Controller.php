@@ -30,7 +30,7 @@ $ems_db->open_db();
 if($cmd==1){
 
     $result = json_encode($ems_db->prepare_measurement_of_power_from_range($start,$end),JSON_NUMERIC_CHECK);
-     echo $result;
+    echo $result;
 
 }else if($cmd==2){
 

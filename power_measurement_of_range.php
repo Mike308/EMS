@@ -35,6 +35,63 @@ $end = $_GET['end'];
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type="text/javascript">
 
+        google.load("visualization", "1", {packages:["gauge"]});
+        google.setOnLoadCallback(function(){
+
+            drawChart("L1","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_div");
+            drawChart("L2","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_div");
+            drawChart("L3","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l3_div");
+
+
+        });
+
+
+        function drawChart(label,url,div_id) {
+
+            var chart_data = google.visualization.arrayToDataTable([
+                ['Label', 'Value'],
+                [label, 0],
+
+
+            ]);
+
+
+            var options = {
+                width: 400, height: 400,
+                redFrom: 90, redTo: 100,
+                yellowFrom:75, yellowTo: 90,
+                minorTicks: 5
+            };
+
+            var chart = new google.visualization.Gauge(document.getElementById(div_id));
+
+
+            chart.draw(chart_data, options);
+
+
+
+            setInterval(function() {
+
+                $.getJSON(url,function(data) {
+
+                    //console.log(data);
+
+                    $.each(data.data, function(index,value){
+
+
+
+                        chart_data.setValue(0,1,value.data);
+                        chart.draw(chart_data,options);
+
+                    });
+
+                });
+
+
+            },1000);
+
+        }
+
 
 
 
@@ -43,9 +100,6 @@ $end = $_GET['end'];
 
         $ (function () {
             var options = {
-
-
-
                 chart: {
                     type: 'line',
                     marginRight: 130,
@@ -84,16 +138,13 @@ $end = $_GET['end'];
                     y: 100,
                     borderWidth: 0
                 },
-                scrollbar: {
-                    enabled: true
-                },
                 series: []
             };
 
             var chart1,
+                chart2;
 
-
-            $.getJSON('controllers/EMS_Chart_Range_Controller.php?cmd=1&start=<?php echo $start.'&end='.$end?>', function(data){
+            $.getJSON('controllers/EMS_Chart_Range_Controller.php?cmd=1&start=<?php echo $start?>&end=<?php echo $end?>', function(data){
 
                 // chart 1
                 options.chart.renderTo = 'power';
@@ -114,7 +165,7 @@ $end = $_GET['end'];
 
         var app = angular.module('myApp', []);
         app.controller('power', function($scope, $http) {
-            $http.get("controllers/EMS_Table_Controller.php?cmd=1")
+            $http.get("controllers/EMS_Table_Controller.php?cmd=1&start=<?php echo $start?>&end=<?php echo $end?>")
                 .then(function (response) {$scope.names = response.data.power;});
         });
 
@@ -136,14 +187,25 @@ $end = $_GET['end'];
 <div class="container">
 
 
+    <table>
+        <tr>
+            <th style="text-align: center"> Moc L1 </th>
+            <th style="text-align: center"> Moc L2 </th>
+        </tr>
 
+        <tr>
+            <td align="center"> <div id = "l1_div"> </div> </td>
+            <td align="center"> <div id = "l2_div"> </div> </td>
+        </tr>
+    </table>
+    </table>
 
 
     <div id = "power" style="padding-bottom: 5%">  </div>
 
     <div ng-app="myApp" ng-controller="power">
 
-       Szukaj po fazie: <input type="text" class="form-control" ng-model="search.name">
+        Szukaj po fazie: <input type="text" class="form-control" ng-model="search.name">
 
 
         <table class="table table-striped table-hover ">
@@ -158,7 +220,7 @@ $end = $_GET['end'];
             <tr ng-repeat="x in names | filter: search">
                 <td>{{ x.name }}</td>
                 <td>{{ x.result }}</td>
-                <td>{{x.time}}</td>
+                <td>{{ x.time }}</td>
             </tr>
         </table>
 

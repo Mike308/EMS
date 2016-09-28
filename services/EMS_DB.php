@@ -188,6 +188,46 @@ class EMS_DB{
 
     }
 
+    public function query_for_json($sql, $params){
+
+        try{
+
+            $st = $this->cn->prepare($sql);
+
+            foreach ($params as $parameter=>$bind){
+
+
+
+                $st->bindValue($parameter,$bind);
+
+            }
+
+            $st->execute();
+
+            while ($row = $st->fetch()){
+
+
+
+                $data[] = array('data'=>$row[0]);
+
+            }
+
+            return $data;
+
+
+
+
+
+
+        }catch (PDOException $e){
+
+
+
+        }
+
+
+    }
+
 
 
     public function prepare_measurement_of_power(){
