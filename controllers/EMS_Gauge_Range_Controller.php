@@ -27,6 +27,19 @@ if($cmd==0){
     echo  "{".'"data"'.":"." ".$result."}";
     
 }
+else if($cmd==1){
+
+    $result = json_encode($ems_db->query_for_json("select avg(result) from power_measurement where phase_no = :phase_no and time between :start and :end",array('phase_no' =>$phase_no,'start'=>$start,'end'=>$end)),JSON_NUMERIC_CHECK);
+    echo  "{".'"data"'.":"." ".$result."}";
+
+}
+else if($cmd=2){
+
+    $result = json_encode($ems_db->query_for_json("select sum(result) from power_measurement where time between :start and :end",array('start'=>$start,'end'=>$end)),JSON_NUMERIC_CHECK);
+    echo  "{".'"data"'.":"." ".$result."}";
+
+}
+
 
 
 
