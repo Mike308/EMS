@@ -9,6 +9,7 @@
 include 'GUI\Navbar.php';
 include 'services\Auth_Gate.php';
 $auth = new Auth_Gate();
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $auth->start_session();
 $permission = $auth->get_user_prem();
 
