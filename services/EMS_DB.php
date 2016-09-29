@@ -391,6 +391,27 @@ class EMS_DB{
 
     }
 
+    public function get_phases_name($table){
+
+
+        try{
+
+            $st = $this->cn->prepare("select distinct concat('L',phase_no) name from $table");
+            $st->execute();
+            $result = $st->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+
+
+
+        }catch (PDOException $e){
+
+
+
+        }
+
+    }
+
 
     
 
