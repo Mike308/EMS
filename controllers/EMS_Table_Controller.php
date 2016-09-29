@@ -35,5 +35,13 @@ if($cmd==1){
     // echo  "{".'"data"'.":"." ".$result."}";
     echo $result;
 
+}else if($cmd=3){
+
+    $result = json_encode($ems_db->get_phases_name("power_measurement"));
+
+    // echo $result;
+    echo  "{".'"power"'.":"." ".$result."}";
+
+
 }
 
