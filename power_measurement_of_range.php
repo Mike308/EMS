@@ -8,6 +8,7 @@
 
 include 'GUI\Navbar.php';
 include 'services\Auth_Gate.php';
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $auth = new Auth_Gate();
 $auth->start_session();
 $permission = $auth->get_user_prem();
@@ -38,9 +39,13 @@ $end = $_GET['end'];
         google.load("visualization", "1", {packages:["gauge"]});
         google.setOnLoadCallback(function(){
 
-            drawChart("L1","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_div");
-            drawChart("L2","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_div");
-            drawChart("L3","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l3_div");
+            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_div");
+            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=1&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_avg_div");
+            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_div");
+            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=1&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_avg_div");
+            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_div");
+            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=1&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_avg_div");
+            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=2&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","sum_div");
 
 
         });
@@ -57,10 +62,10 @@ $end = $_GET['end'];
 
 
             var options = {
-                width: 400, height: 400,
-                redFrom: 90, redTo: 100,
-                yellowFrom:75, yellowTo: 90,
-                minorTicks: 5
+                width: 150, height: 150,
+                redFrom: 500, redTo: 1000,
+                yellowFrom:250, yellowTo: 499,
+                minorTicks: 15, max:2000
             };
 
             var chart = new google.visualization.Gauge(document.getElementById(div_id));
@@ -70,11 +75,11 @@ $end = $_GET['end'];
 
 
 
-            setInterval(function() {
+
 
                 $.getJSON(url,function(data) {
 
-                    //console.log(data);
+                    console.log(url);
 
                     $.each(data.data, function(index,value){
 
@@ -88,7 +93,7 @@ $end = $_GET['end'];
                 });
 
 
-            },1000);
+
 
         }
 
@@ -142,7 +147,7 @@ $end = $_GET['end'];
             };
 
             var chart1,
-                chart2;
+
 
             $.getJSON('controllers/EMS_Chart_Range_Controller.php?cmd=1&start=<?php echo $start?>&end=<?php echo $end?>', function(data){
 
@@ -154,6 +159,7 @@ $end = $_GET['end'];
 
                 options.series.push(data[1]);
                 options.series.push(data[2]);
+                options.series.push(data[3]);
 
                 chart1 = new Highcharts.Chart(options);
 
@@ -163,16 +169,15 @@ $end = $_GET['end'];
             });
         });
 
-        var app = angular.module('myApp', []);
-        app.controller('power', function($scope, $http) {
+        var app = angular.module('myApp', [])
+        .controller('power', function($scope, $http) {
             $http.get("controllers/EMS_Table_Controller.php?cmd=1&start=<?php echo $start?>&end=<?php echo $end?>")
+                 .then(function (response) {$scope.names = response.data.power;});
+        })
+        .controller('power2', function($scope, $http) {
+            $http.get("controllers/EMS_Table_Controller.php?cmd=3&start=<?php echo $start?>&end=<?php echo $end?>")
                 .then(function (response) {$scope.names = response.data.power;});
         });
-
-        $scope.names = {};
-
-
-
 
 
     </script>
@@ -187,42 +192,67 @@ $end = $_GET['end'];
 <div class="container">
 
 
-    <table>
-        <tr>
-            <th style="text-align: center"> Moc L1 </th>
-            <th style="text-align: center"> Moc L2 </th>
-        </tr>
 
-        <tr>
-            <td align="center"> <div id = "l1_div"> </div> </td>
-            <td align="center"> <div id = "l2_div"> </div> </td>
-        </tr>
-    </table>
-    </table>
+
+
+
 
 
     <div id = "power" style="padding-bottom: 5%">  </div>
 
-    <div ng-app="myApp" ng-controller="power">
+    <div ng-app="myApp">
 
-        Szukaj po fazie: <input type="text" class="form-control" ng-model="search.name">
+        <div ng-controller = "power2">
+            <table>
+                <tr>
+                    <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Maksymalna moc dla: <br>  {{x.name}} </th>
+                    <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Średnia moc dla: <br>  {{x.name}} </th>
+                    <th style="padding: 5px; text-align: center" align="center"> Całkowita moc pozorna <br> <br></th>
+                </tr>
+
+                <tr>
+                    <td style="padding: 5px" align="center"> <div id = "l1_div"> </div> </td>
+                    <td style="padding: 5px" align="center"> <div id = "l2_div"> </div> </td>
+                    <td style="padding: 5px" align="center"> <div id = "l3_div"> </div> </td>
+                    <td style="padding: 5px" align="center"> <div id = "l1_avg_div"> </div> </td>
+                    <td style="padding: 5px" align="center"> <div id = "l2_avg_div"> </div> </td>
+                    <td style="padding: 5px" align="center"> <div id = "l3_avg_div"> </div> </td>
+                    <td style="padding: 5px" align="center"> <div id = "sum_div"> </div> </td>
+                </tr>
 
 
-        <table class="table table-striped table-hover ">
 
-            <tr>
-                <th> Faza </th>
-                <th> Pobór mocy </th>
-                <th> Data i czas pomiaru </th>
+            </table>
 
-            </tr>
 
-            <tr ng-repeat="x in names | filter: search">
-                <td>{{ x.name }}</td>
-                <td>{{ x.result }}</td>
-                <td>{{ x.time }}</td>
-            </tr>
-        </table>
+
+        </div>
+
+        <div ng-controller = "power">
+
+            Szukaj po fazie: <input type="text" class="form-control" ng-model="search.name">
+
+
+            <table class="table table-striped table-hover ">
+
+                <tr>
+                    <th> Faza </th>
+                    <th> Pobór mocy </th>
+                    <th> Data i czas pomiaru </th>
+
+                </tr>
+
+                <tr ng-repeat="x in names | filter: search">
+                    <td>{{ x.name }}</td>
+                    <td>{{ x.result }}</td>
+                    <td>{{ x.time }}</td>
+                </tr>
+            </table>
+
+        </div>
+
+
+
 
     </div>
 
