@@ -31,13 +31,22 @@ if($cmd==1){
 
 }else if($cmd==2){
 
-    $result = json_encode($ems_db->prepare_measurement_of_current(),JSON_NUMERIC_CHECK);
-    // echo  "{".'"data"'.":"." ".$result."}";
-    echo $result;
+    $result = json_encode($ems_db->prepare_measurement_of_current_from_range_for_table($start,$end),JSON_NUMERIC_CHECK);
+
+    echo  "{".'"current"'.":"." ".$result."}";
+
 
 }else if($cmd=3){
 
     $result = json_encode($ems_db->get_phases_name("power_measurement"));
+
+    // echo $result;
+    echo  "{".'"power"'.":"." ".$result."}";
+
+
+}else if($cmd=4){
+
+    $result = json_encode($ems_db->get_phases_name("current_measurement"));
 
     // echo $result;
     echo  "{".'"power"'.":"." ".$result."}";
