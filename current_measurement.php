@@ -32,61 +32,61 @@ $permission = $auth->get_user_prem();
     <script src="bootstrap/respond.min.js"></script>
 
     <script type="text/javascript">
-        google.load("visualization", "1", {packages:["gauge"]});
-        google.setOnLoadCallback(function(){
-
-            drawChart("L1","controllers/EMS_Controller.php?cmd=2&phase_no=1","l1_div");
-            drawChart("L2","controllers/EMS_Controller.php?cmd=2&phase_no=2","l2_div");
-
-
-        });
-
-
-        function drawChart(label,url,div_id) {
-
-            var chart_data = google.visualization.arrayToDataTable([
-                ['Label', 'Value'],
-                [label, 0],
-
-
-            ]);
-
-
-            var options = {
-                width: 400, height: 400,
-                redFrom: 90, redTo: 100,
-                yellowFrom:75, yellowTo: 90,
-                minorTicks: 5
-            };
-
-            var chart = new google.visualization.Gauge(document.getElementById(div_id));
-
-
-            chart.draw(chart_data, options);
-
-
-
-            setInterval(function() {
-
-                $.getJSON(url,function(data) {
-
-                    //console.log(data);
-
-                    $.each(data.data, function(index,value){
-
-
-
-                        chart_data.setValue(0,1,value.data);
-                        chart.draw(chart_data,options);
-
-                    });
-
-                });
-
-
-            },1000);
-
-        }
+//        google.load("visualization", "1", {packages:["gauge"]});
+//        google.setOnLoadCallback(function(){
+//
+//            drawChart("L1","controllers/EMS_Controller.php?cmd=2&phase_no=1","l1_div");
+//            drawChart("L2","controllers/EMS_Controller.php?cmd=2&phase_no=2","l2_div");
+//
+//
+//        });
+//
+//
+//        function drawChart(label,url,div_id) {
+//
+//            var chart_data = google.visualization.arrayToDataTable([
+//                ['Label', 'Value'],
+//                [label, 0],
+//
+//
+//            ]);
+//
+//
+//            var options = {
+//                width: 400, height: 400,
+//                redFrom: 90, redTo: 100,
+//                yellowFrom:75, yellowTo: 90,
+//                minorTicks: 5
+//            };
+//
+//            var chart = new google.visualization.Gauge(document.getElementById(div_id));
+//
+//
+//            chart.draw(chart_data, options);
+//
+//
+//
+//            setInterval(function() {
+//
+//                $.getJSON(url,function(data) {
+//
+//
+//
+//                    $.each(data.data, function(index,value){
+//
+//
+//
+//                        chart_data.setValue(0,1,value.data);
+//                        chart.draw(chart_data,options);
+//
+//                    });
+//
+//                });
+//
+//
+//            },1000);
+//
+//        }
 
 
 
@@ -142,13 +142,14 @@ $permission = $auth->get_user_prem();
             $.getJSON('controllers/EMS_Chart_Controller.php?cmd=2', function(data){
 
                 // chart 1
-                options.chart.renderTo = 'power';
-                options.title.text = 'Pobór mocy';
-                options.yAxis.title.text = 'moc [W]';
+                options.chart.renderTo = 'current';
+                options.title.text = 'Natężenie prądu';
+                options.yAxis.title.text = '[A]';
                 options.xAxis.categories = data[0]['data'];
 
                 options.series.push(data[1]);
                 options.series.push(data[2]);
+                options.series.push(data[3]);
 
                 chart1 = new Highcharts.Chart(options);
 
@@ -167,23 +168,23 @@ $permission = $auth->get_user_prem();
 
 <body>
 <h2> Internetowy System Monitorowania Instalacji </h2>
-<?php $nav = new Navbar("power_measurement.php",$permission);?>
+<?php $nav = new Navbar("current_measurement.php",$permission);?>
 
 <div class="container">
 
-    <table align="center">
-        <tr>
-            <th style="text-align: center"> Moc L1 </th>
-            <th style="text-align: center"> Moc L2 </th>
-        </tr>
+<!--    <table align="center">-->
+<!--        <tr>-->
+<!--            <th style="text-align: center"> Moc L1 </th>-->
+<!--            <th style="text-align: center"> Moc L2 </th>-->
+<!--        </tr>-->
+<!---->
+<!--        <tr>-->
+<!--            <td align="center"> <div id = "l1_div"> </div> </td>-->
+<!--            <td align="center"> <div id = "l2_div"> </div> </td>-->
+<!--        </tr>-->
+<!--    </table>-->
 
-        <tr>
-            <td align="center"> <div id = "l1_div"> </div> </td>
-            <td align="center"> <div id = "l2_div"> </div> </td>
-        </tr>
-    </table>
-
-    <div id = "power">  </div>
+    <div id = "current">  </div>
 
 </div>
 
