@@ -182,6 +182,9 @@ class EMS_DB{
         }catch (PDOException $e){
 
 
+            echo  "Problem: ".$e;
+
+
 
         }
 
@@ -380,6 +383,37 @@ class EMS_DB{
             return $result;
             
             
+
+
+        }catch (PDOException $e){
+
+
+
+        }
+
+
+    }
+
+    public function prepare_measurement_of_current_from_range_for_table($start, $end){
+
+        try{
+
+
+
+
+
+            $i = 0;
+            $st = $this->cn->prepare("select DISTINCT concat('L',phase_no) name,phase_no,result,time from current_measurement where time between :start and :end order by time asc");
+            $st->bindValue(":start",$start);
+            $st->bindValue(":end",$end);
+            $st->execute();
+            $result = $st->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+            return $result;
+
+
 
 
         }catch (PDOException $e){
