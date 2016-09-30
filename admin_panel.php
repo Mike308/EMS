@@ -36,14 +36,14 @@ $permission = $auth->get_user_prem();
 
 
       <h2> Internetowy System Monitorowania Instalacji </h2>
-        <?php $nav = new Navbar("admin_panel.php",0);?>
-
+        <?php $nav = new Navbar("admin_panel.php",$permission);?>
 
       <div class="container">
 
-          <table style="border-spacing: 15px">
+
+          <table>
               <tr>
-                  <th style="padding: 5px">
+                  <th>
                       <div class="panel-group" align="center">
                           <div class="panel panel-primary" style="width: 300px">
                               <div class="panel-heading" style="width: 300px; color: white" > Logowanie </div>
@@ -74,14 +74,19 @@ $permission = $auth->get_user_prem();
                   <th style="padding: 5px">
                       <div class="panel-group" align="center">
                           <div class="panel panel-primary" style="width: 300px">
-                              <div class="panel-heading" style="width: 300px; color: white" > Stawka </div>
+                              <div class="panel-heading" style="width: 300px; color: white" > Ustawienie napięcia oraz współczynnika mocy </div>
                               <div class="panel-body">
 
-                                  <form action="controllers/EMS_Price_Controller.php" method="post">
+                                  <form action="controllers/EMS_Setup_Controller.php" method="post">
                                       <div class="form-group">
-                                          <label for="price">Login: </label>
-                                          <input type="text" class="form-control" id="price" name="price" style="text-align: center">
+                                          <label for="ac_voltage">Napięcie: </label>
+                                          <input type="text" class="form-control" id="ac_voltage" name="ac_voltage" style="text-align: center">
 
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label for="power_factor">Współczynnik mocy:  </label>
+                                          <input type="text" class="form-control" id="power_factor" name="power_factor" style="text-align: center">
                                       </div>
 
 
@@ -103,13 +108,13 @@ $permission = $auth->get_user_prem();
 
                                   <form action="power_measurement_of_range.php" method="get">
                                       <div class="form-group">
-                                          <label for="start">Login: </label>
+                                          <label for="start">Początek: </label>
                                           <input type="datetime-local" class="form-control" id="start" name = "start"  style="width: 300px;">
 
                                       </div>
 
                                       <div class="form-group">
-                                          <label for="start">Login: </label>
+                                          <label for="start">Koniec: </label>
                                           <input type="datetime-local" class="form-control" id="end" name = "end"  style="width: 300px;">
 
                                       </div>
@@ -127,26 +132,26 @@ $permission = $auth->get_user_prem();
 
                   <th style="padding: 5px">
                       <div class="panel-group" align="center">
-                          <div class="panel panel-primary" style="width: 350px">
+                          <div class="panel panel-danger" style="width: 350px">
                               <div class="panel-heading" style="width: 350px; color: white" > Analiza natężenia prądu  </div>
                               <div class="panel-body">
 
                                   <form action="current_measurement_of_range.php" method="get">
                                       <div class="form-group">
-                                          <label for="start">Login: </label>
+                                          <label for="start">Początek: </label>
                                           <input type="datetime-local" class="form-control" id="start" name = "start"  style="width: 300px;">
 
                                       </div>
 
                                       <div class="form-group">
-                                          <label for="start">Login: </label>
+                                          <label for="start">Koniec: </label>
                                           <input type="datetime-local" class="form-control" id="end" name = "end"  style="width: 300px;">
 
                                       </div>
 
 
                                       <div class="form-group">
-                                          <input type="submit" class="btn btn-primary" value="Ustaw stawkę">
+                                          <input type="submit" class="btn btn-danger" value="Pokaż statystyki">
                                       </div>
                                   </form>
 
@@ -155,35 +160,35 @@ $permission = $auth->get_user_prem();
                       </div>
                   </th>
 
-                  <th style="padding: 5px">
-                      <div class="panel-group" align="center">
-                          <div class="panel panel-primary" style="width: 350px">
-                              <div class="panel-heading" style="width: 350px; color: white" > Zużycie energii elektrycznej </div>
-                              <div class="panel-body">
-
-                                  <form action="power_consumption_measurement_of_range.php" method="get">
-                                      <div class="form-group">
-                                          <label for="start">Login: </label>
-                                          <input type="datetime-local" class="form-control" id="start" name = "start"  style="width: 300px;">
-
-                                      </div>
-
-                                      <div class="form-group">
-                                          <label for="start">Login: </label>
-                                          <input type="datetime-local" class="form-control" id="end" name = "end"  style="width: 300px;">
-
-                                      </div>
-
-
-                                      <div class="form-group">
-                                          <input type="submit" class="btn btn-primary" value="Ustaw stawkę">
-                                      </div>
-                                  </form>
-
-                              </div>
-                          </div>
-                      </div>
-                  </th>
+<!--                  <th style="padding: 5px">-->
+<!--                      <div class="panel-group" align="center">-->
+<!--                          <div class="panel panel-primary" style="width: 350px">-->
+<!--                              <div class="panel-heading" style="width: 350px; color: white" > Zużycie energii elektrycznej </div>-->
+<!--                              <div class="panel-body">-->
+<!---->
+<!--                                  <form action="power_consumption_measurement_of_range.php" method="get">-->
+<!--                                      <div class="form-group">-->
+<!--                                          <label for="start">Login: </label>-->
+<!--                                          <input type="datetime-local" class="form-control" id="start" name = "start"  style="width: 300px;">-->
+<!---->
+<!--                                      </div>-->
+<!---->
+<!--                                      <div class="form-group">-->
+<!--                                          <label for="start">Login: </label>-->
+<!--                                          <input type="datetime-local" class="form-control" id="end" name = "end"  style="width: 300px;">-->
+<!---->
+<!--                                      </div>-->
+<!---->
+<!---->
+<!--                                      <div class="form-group">-->
+<!--                                          <input type="submit" class="btn btn-primary" value="Ustaw stawkę">-->
+<!--                                      </div>-->
+<!--                                  </form>-->
+<!---->
+<!--                              </div>-->
+<!--                          </div>-->
+<!--                      </div>-->
+<!--                  </th>-->
 
 
 
@@ -194,7 +199,9 @@ $permission = $auth->get_user_prem();
 
           </table>
 
-      </div>
+          </div>
+
+
 
 
 
