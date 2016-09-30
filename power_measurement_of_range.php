@@ -147,7 +147,7 @@ $end = $_GET['end'];
             };
 
             var chart1,
-
+                chart2;
 
             $.getJSON('controllers/EMS_Chart_Range_Controller.php?cmd=1&start=<?php echo $start?>&end=<?php echo $end?>', function(data){
 
@@ -230,10 +230,16 @@ $end = $_GET['end'];
 
         <div ng-controller = "power">
 
-            Szukaj po fazie: <input type="text" class="form-control" ng-model="search.name">
+
+            <div ng-show = "!names.length" class="alert alert-dismissable alert-danger" style="text-align: center">
+<!--                <button type="button" class="close" data-dismiss="alert">×</button>-->
+                <strong>Brak danych w tym zakresie dat!</strong>
+            </div>
+
+         <div ng-show = "names.lenght"> Szukaj po fazie: <input type="text" class="form-control" ng-model="search.name"> </div>
 
 
-            <table class="table table-striped table-hover ">
+            <table ng-show="names.length" class="table table-striped table-hover ">
 
                 <tr>
                     <th> Faza </th>
@@ -246,6 +252,7 @@ $end = $_GET['end'];
                     <td>{{ x.name }}</td>
                     <td>{{ x.result }}</td>
                     <td>{{ x.time }}</td>
+
                 </tr>
             </table>
 
