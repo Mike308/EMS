@@ -50,6 +50,7 @@ class Auth_Gate{
         }else{
 
             echo "Nie poprawne dane logowania";
+            $_SESSION['perm'] = 0;
 
         }
 
