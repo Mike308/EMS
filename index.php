@@ -12,6 +12,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $auth = new Auth_Gate();
 $auth->start_session();
 $permission = $auth->get_user_prem();
+echo $permission;
 
 ?>
 
@@ -31,21 +32,26 @@ $permission = $auth->get_user_prem();
     <link rel="stylesheet" href="darkly/theme/usebootstrap.css">
     <script src="bootstrap/html5shiv.js"></script>
     <script src="bootstrap/respond.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type="text/javascript">
         google.load("visualization", "1", {packages:["gauge"]});
         google.setOnLoadCallback(function(){
 
-            drawChart("L1","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=1","l1_div");
-            drawChart("L2","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=2","l2_div");
-            drawChart("L3","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=3","l3_div");
+            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=1","l1_div",2000,15);
+            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=3&phase_no=1","l1_avg_div",2000,15);
+            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=2","l2_div",2000,15);
+            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=3&phase_no=2","l2_avg_div",2000,15);
+            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=3","l3_div",2000,15);
+                    
+            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=3&phase_no=3","l3_avg_div",2000,15);
+
 
 
 
         });
 
 
-        function drawChart(label,url,div_id) {
+        function drawChart(label,url,div_id,max_value,minor_ticks) {
 
             var chart_data = google.visualization.arrayToDataTable([
                 ['Label', 'Value'],
@@ -56,10 +62,10 @@ $permission = $auth->get_user_prem();
 
 
             var options = {
-                width: 400, height: 400,
-                redFrom: 90, redTo: 100,
-                yellowFrom:75, yellowTo: 90,
-                minorTicks: 5
+                width: 150, height: 150,
+                redFrom: 500, redTo: 1000,
+                yellowFrom:250, yellowTo: 499,
+                minorTicks: minor_ticks, max:max_value
             };
 
             var chart = new google.visualization.Gauge(document.getElementById(div_id));
@@ -90,6 +96,14 @@ $permission = $auth->get_user_prem();
         }
 
 
+        var app = angular.module('myApp', []);
+
+           app.controller('power2', function($scope, $http) {
+                $http.get("controllers/EMS_Table_Controller.php?cmd=3&start=0&end=0")
+                    .then(function (response) {$scope.names = response.data.power;});
+            });
+
+
 
     </script>
 
@@ -101,21 +115,47 @@ $permission = $auth->get_user_prem();
 <?php $nav = new Navbar("index.php",$permission);?>
 
     <div class="container">
-
-        <table align="center">
-           <tr>
-               <th style="text-align: center"> Moc L1 </th>
-               <th style="text-align: center"> Moc L2 </th>
-               <th style="text-align: center"> Moc L3 </th>
-
-           </tr>
-
+        <div ng-app="myApp">
+        <table>
             <tr>
-                <td align="center"> <div id = "l1_div"> </div> </td>
-                <td align="center"> <div id = "l2_div"> </div> </td>
-                <td align="center"> <div id = "l3_div"> </div> </td>
-            </tr>
-        </table>
+                <th>
+                    <div class="panel-group" align="center">
+                        <div class="panel panel-primary" style="width: 1000px">
+                            <div class="panel-heading" style="width: 1000px; color: white" > Pomiar mocy pozornej </div>
+                            <div class="panel-body">
+
+
+
+                                    <div ng-controller = "power2">
+                                        <table>
+                                            <tr>
+                                                <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Aktualna moc dla: <br>  {{x.name}} </th>
+                                                <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Średnia moc dla: <br>  {{x.name}} </th>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td style="padding: 5px" align="center"> <div id = "l1_div"> </div> </td>
+                                                <td style="padding: 5px" align="center"> <div id = "l2_div"> </div> </td>
+                                                <td style="padding: 5px" align="center"> <div id = "l3_div"> </div> </td>
+                                                <td style="padding: 5px" align="center"> <div id = "l1_avg_div"> </div> </td>
+                                                <td style="padding: 5px" align="center"> <div id = "l2_avg_div"> </div> </td>
+                                                <td style="padding: 5px" align="center"> <div id = "l3_avg_div"> </div> </td>
+
+                                            </tr>
+
+
+
+                                        </table>
+
+
+
+                                    </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </th>
 
     </div>
 
