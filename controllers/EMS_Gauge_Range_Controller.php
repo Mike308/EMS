@@ -56,6 +56,12 @@ else if($cmd==5){
     echo  "{".'"data"'.":"." ".$result."}";
 
 }
+else if($cmd==6){
+
+    $result = json_encode($ems_db->query_for_json("select max((result*parameters.value)) from power_measurement join parameters on parameters.id='power_factor' where time between :start and :end",array('start'=>$start,'end'=>$end)),JSON_NUMERIC_CHECK);
+    echo  "{".'"data"'.":"." ".$result."}";
+
+}
 
 
 
