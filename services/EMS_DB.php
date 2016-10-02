@@ -96,6 +96,8 @@ class EMS_DB{
 
             }
 
+            return $data;
+
 
 
         }catch (PDOException $e){
@@ -193,17 +195,33 @@ class EMS_DB{
 
     public function query_for_json($sql, $params){
 
+
         try{
 
             $st = $this->cn->prepare($sql);
 
-            foreach ($params as $parameter=>$bind){
 
 
 
-                $st->bindValue($parameter,$bind);
+//                if(count($params)>1){
 
-            }
+                    foreach ($params as $parameter=>$bind){
+
+
+                        $st->bindValue($parameter,$bind);
+
+
+                    }
+
+//                }
+
+
+//            }else {
+//
+//                $st->bindValue()
+//            }
+
+
 
             $st->execute();
 
@@ -224,7 +242,7 @@ class EMS_DB{
 
         }catch (PDOException $e){
 
-
+            echo  "Problem: ".$e;
 
         }
 
@@ -445,6 +463,53 @@ class EMS_DB{
         }
 
     }
+
+    public function update_query($sql,$parameter,$bind){
+
+        try{
+
+            $st = $this->cn->prepare($sql);
+            $st->bindValue($parameter,$bind);
+            $st->execute();
+
+
+        }catch (PDOException $e){
+
+
+            echo  "Problem: ".$e;
+
+
+
+        }
+
+    }
+
+    public function set_parameter($ac_voltage,$power_factor){
+
+        $this->update_query("update parameters set parameters.value=:value where id = 'ac_voltage'",":value",$ac_voltage);
+        $this->update_query("update parameters set parameters.value=:value where id = 'power_factor'",":value",$power_factor);
+
+
+    }
+
+    public function set_phase_name($name,$phase_no){
+
+        try{
+
+            $st = $this->cn->prepare("update phase_name set name = :name where phase_no = :phase_no");
+            $st->bindValue(":name",$name);
+            $st->bindValue(":phase_no",$phase_no);
+            $st->execute();
+
+
+        }catch (PDOException $e){
+
+
+        }
+
+    }
+
+
 
 
     
