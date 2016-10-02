@@ -33,24 +33,24 @@ if($cmd==0){
 }
 else if($cmd==2){
 
-    $result = json_encode($ems_db->query_for_json("select max(result) from power_measurement where phase_no = :phase_no",array('phase_no'=>$phase_no)),JSON_NUMERIC_CHECK);
+    $result = json_encode($ems_db->query_for_json("select max(result) from power_measurement where phase_no = :phase_no",array(':phase_no'=>$phase_no)),JSON_NUMERIC_CHECK);
     echo  "{".'"data"'.":"." ".$result."}";
 
 }
 else if($cmd==3){
 
-    $result = json_encode($ems_db->query_for_json("select avg(result) from power_measurement where phase_no = :phase",array('phase_no'=>$phase_no)),JSON_NUMERIC_CHECK);
+    $result = json_encode($ems_db->query_for_json("select avg(result) from power_measurement where phase_no = :phase_no",array(':phase_no'=>$phase_no)),JSON_NUMERIC_CHECK);
     echo  "{".'"data"'.":"." ".$result."}";
 }
 else if($cmd==4){
 
-    $result = json_encode($ems_db->query_for_json("select max(result) from current_measurement where phase_no = :phase_no",array('phase_no'=>$phase_no)),JSON_NUMERIC_CHECK);
+    $result = json_encode($ems_db->query_for_json("select max(result) from current_measurement where phase_no = :phase_no",array(':phase_no'=>$phase_no)),JSON_NUMERIC_CHECK);
     echo  "{".'"data"'.":"." ".$result."}";
 
 }
 else if($cmd==5){
 
-    $result = json_encode($ems_db->query_for_json("select avg(result) from current_measurement where phase_no = :phase",array('phase_no'=>$phase_no)),JSON_NUMERIC_CHECK);
+    $result = json_encode($ems_db->query_for_json("select avg(result) from current_measurement where phase_no = :phase_no",array(':phase_no'=>$phase_no)),JSON_NUMERIC_CHECK);
     echo  "{".'"data"'.":"." ".$result."}";
 }
 
