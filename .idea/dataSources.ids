@@ -11,67 +11,81 @@
       <table id="2" parent="1" name="current_measurement"/>
       <table id="3" parent="1" name="power_measurement"/>
       <table id="4" parent="1" name="users"/>
-      <column id="5" parent="2" name="id">
+      <table id="5" parent="1" name="parameters"/>
+      <table id="6" parent="1" name="phase_name"/>
+      <column id="7" parent="2" name="id">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="6" parent="2" name="phase_no">
+      <column id="8" parent="2" name="phase_no">
         <data-type>int(10) unsigned</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="7" parent="2" name="result">
-        <data-type>int(10) unsigned</data-type>
+      <column id="9" parent="2" name="result">
+        <data-type>double unsigned</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="8" parent="2" name="time">
+      <column id="10" parent="2" name="time">
         <data-type>timestamp</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <index id="9" parent="2" name="id">
+      <index id="11" parent="2" name="id">
         <columns>id</columns>
         <desc-columns></desc-columns>
       </index>
-      <column id="10" parent="3" name="id">
+      <column id="12" parent="3" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="11" parent="3" name="phase_no">
+      <column id="13" parent="3" name="phase_no">
         <data-type>int(11)</data-type>
       </column>
-      <column id="12" parent="3" name="result">
+      <column id="14" parent="3" name="result">
         <data-type>int(11)</data-type>
       </column>
-      <column id="13" parent="3" name="time">
+      <column id="15" parent="3" name="time">
         <data-type>timestamp</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <index id="14" parent="3" name="id">
+      <index id="16" parent="3" name="id">
         <columns>id</columns>
         <desc-columns></desc-columns>
       </index>
-      <column id="15" parent="4" name="id">
+      <column id="17" parent="4" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="16" parent="4" name="login">
+      <column id="18" parent="4" name="login">
         <data-type>varchar(50)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="17" parent="4" name="password">
+      <column id="19" parent="4" name="password">
         <data-type>varchar(50)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="18" parent="4" name="permission">
+      <column id="20" parent="4" name="permission">
         <data-type>int(11)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <index id="19" parent="4" name="id">
+      <index id="21" parent="4" name="id">
         <columns>id</columns>
         <desc-columns></desc-columns>
       </index>
+      <column id="22" parent="5" name="id">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="23" parent="5" name="value">
+        <data-type>float</data-type>
+      </column>
+      <column id="24" parent="6" name="phase_no">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="25" parent="6" name="name">
+        <data-type>varchar(50)</data-type>
+      </column>
     </database-model>
   </data-source>
 </component>

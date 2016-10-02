@@ -38,7 +38,7 @@ $permission = $auth->get_user_prem();
       <h2> Internetowy System Monitorowania Instalacji </h2>
         <?php $nav = new Navbar("admin_panel.php",$permission);?>
 
-      <div class="container">
+
 
 
           <table>
@@ -77,7 +77,7 @@ $permission = $auth->get_user_prem();
                               <div class="panel-heading" style="width: 300px; color: white" > Ustawienie napięcia oraz współczynnika mocy </div>
                               <div class="panel-body">
 
-                                  <form action="controllers/EMS_Setup_Controller.php" method="post">
+                                  <form action="controllers/EMS_Parameters_Controller.php" method="post">
                                       <div class="form-group">
                                           <label for="ac_voltage">Napięcie: </label>
                                           <input type="text" class="form-control" id="ac_voltage" name="ac_voltage" style="text-align: center">
@@ -91,7 +91,7 @@ $permission = $auth->get_user_prem();
 
 
                                       <div class="form-group">
-                                          <input type="submit" class="btn btn-primary" value="Ustaw stawkę">
+                                          <input type="submit" class="btn btn-primary" value="Ustaw parametry">
                                       </div>
                                   </form>
 
@@ -233,7 +233,7 @@ $permission = $auth->get_user_prem();
 
           </table>
 
-          </div>
+
 
 
 
