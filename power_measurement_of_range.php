@@ -146,6 +146,48 @@ $end = $_GET['end'];
                 series: []
             };
 
+            var options2 = {
+                chart: {
+                    type: 'line',
+                    marginRight: 130,
+                    marginBottom: 25
+                },
+                title: {
+                    x: -20 //center
+                },
+                subtitle: {
+                    text: '',
+                    x: -20
+                },
+                xAxis: {
+                    categories: []
+                },
+                yAxis: {
+                    title: {
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    formatter: function() {
+                        return '<b>'+ this.series.name +'</b><br/>'+
+                            this.x +': '+ this.y;
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -10,
+                    y: 100,
+                    borderWidth: 0
+                },
+                series: []
+            };
+
             var chart1,
                 chart2;
 
@@ -167,6 +209,26 @@ $end = $_GET['end'];
 
 
             });
+
+            $.getJSON('controllers/EMS_Chart_Range_Controller.php?cmd=3&start=<?php echo $start?>&end=<?php echo $end?>', function(data){
+
+                // chart 1
+                options2.chart.renderTo = 'real_power';
+                options2.title.text = 'Moc czynna';
+                options2.yAxis.title.text = 'moc [W]';
+                options2.xAxis.categories = data[0]['data'];
+
+                options2.series.push(data[1]);
+                options2.series.push(data[2]);
+                options2.series.push(data[3]);
+
+                chart2 = new Highcharts.Chart(options2);
+
+
+
+
+            });
+
         });
 
         var app = angular.module('myApp', [])
@@ -199,6 +261,8 @@ $end = $_GET['end'];
 
 
     <div id = "power" style="padding-bottom: 5%">  </div>
+
+    <div id = "real_power" style="padding-bottom: 5%">  </div>
 
     <div ng-app="myApp">
 
@@ -237,15 +301,16 @@ $end = $_GET['end'];
             </div>
 
 <!--         <div ng-show = "names.lenght"> -->
-             Szukaj po fazie: <input type="text" class="form-control" ng-model="search.name">
+<!--             Szukaj po fazie: <input type="text" class="form-control" ng-model="search.name">-->
 <!--         </div>-->
 
 
             <table ng-show="names.length" class="table table-striped table-hover ">
 
                 <tr>
-                    <th> Faza </th>
-                    <th> Pobór mocy </th>
+                    <th> Faza <input type="text"  placeholder="Nazwa" ng-model="search.name" style="width: 150px; padding-left: 5px"> </th>
+                    <th> Moc pozorna </th>
+                    <th> Moc czynna  </th>
                     <th> Data i czas pomiaru </th>
 
                 </tr>
@@ -253,6 +318,7 @@ $end = $_GET['end'];
                 <tr ng-repeat="x in names | filter: search">
                     <td>{{ x.name }}</td>
                     <td>{{ x.result }}</td>
+                    <td>{{ x.real_power }} </td>
                     <td>{{ x.time }}</td>
 
                 </tr>
