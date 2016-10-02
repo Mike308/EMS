@@ -102,6 +102,40 @@ $permission = $auth->get_user_prem();
 
                   <th style="padding: 5px">
                       <div class="panel-group" align="center">
+                          <div class="panel panel-primary" style="width: 300px">
+                              <div class="panel-heading" style="width: 300px; color: white" > Ustawienie nazw faz </div>
+                              <div class="panel-body">
+
+                                  <form action="controllers/EMS_Phase_Name_Controller.php" method="post">
+                                      <div class="form-group">
+                                          <label for="phase_name">Nazwa: </label>
+                                          <input type="text" class="form-control" id="name" name="name" style="text-align: center">
+
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label for="phase_no">Faza:  </label>
+                                          <select id = "phase_no" name="phase_no" class="form-control">
+                                              <option value="1"> L1  </option>
+                                              <option value="2"> L2  </option>
+                                              <option value="3"> L3  </option>
+                                          </select>
+
+                                      </div>
+
+
+                                      <div class="form-group">
+                                          <input type="submit" class="btn btn-primary" value="Ustaw nazwę">
+                                      </div>
+                                  </form>
+
+                              </div>
+                          </div>
+                      </div>
+                  </th>
+
+                  <th style="padding: 5px">
+                      <div class="panel-group" align="center">
                           <div class="panel panel-primary" style="width: 350px">
                               <div class="panel-heading" style="width: 350px; color: white" > Analiza poboru mocy  </div>
                               <div class="panel-body">
