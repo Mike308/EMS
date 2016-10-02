@@ -236,7 +236,9 @@ $end = $_GET['end'];
                 <strong>Brak danych w tym zakresie dat!</strong>
             </div>
 
-         <div ng-show = "names.lenght"> Szukaj po fazie: <input type="text" class="form-control" ng-model="search.name"> </div>
+<!--         <div ng-show = "names.lenght"> -->
+             Szukaj po fazie: <input type="text" class="form-control" ng-model="search.name">
+<!--         </div>-->
 
 
             <table ng-show="names.length" class="table table-striped table-hover ">
