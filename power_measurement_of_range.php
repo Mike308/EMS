@@ -41,10 +41,13 @@ $end = $_GET['end'];
 
             drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_div");
             drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=1&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_avg_div");
+            drawChart("W","controllers/EMS_Gauge_Range_Controller.php?cmd=6&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_real_power_div");
             drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_div");
             drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=1&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_avg_div");
+            drawChart("W","controllers/EMS_Gauge_Range_Controller.php?cmd=6&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_real_power_div");
             drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_div");
             drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=1&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_avg_div");
+            drawChart("W","controllers/EMS_Gauge_Range_Controller.php?cmd=6&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_real_power_div");
             drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=2&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","sum_div");
 
 
@@ -282,6 +285,17 @@ $end = $_GET['end'];
                     <td style="padding: 5px" align="center"> <div id = "l2_avg_div"> </div> </td>
                     <td style="padding: 5px" align="center"> <div id = "l3_avg_div"> </div> </td>
                     <td style="padding: 5px" align="center"> <div id = "sum_div"> </div> </td>
+                </tr>
+                
+                <tr>
+                    <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Maksymalna moc czynna dla <br> {{x.name}} </th>
+                    <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Maksymalna moc czynna dla <br> {{x.name}} </th>
+                </tr>
+
+                <tr>
+                    <td style="padding: 5px" align="center"> <div id = "l1_real_power_div"</td>
+                    <td style="padding: 5px" align="center"> <div id = "l2_real_power_div"</td>
+                    <td style="padding: 5px" align="center"> <div id = "l3_real_power_div"</td>
                 </tr>
 
 
