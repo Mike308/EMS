@@ -40,5 +40,11 @@ else if($cmd==2){
 
 
 }
+else if($cmd==3){
+
+    $result = json_encode($ems_db->prepare_measurement_of__real_power_from_range($start,$end),JSON_NUMERIC_CHECK);
+    echo $result;
+
+}
 
 
