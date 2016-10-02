@@ -12,7 +12,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $auth = new Auth_Gate();
 $auth->start_session();
 $permission = $auth->get_user_prem();
-echo $permission;
+
 
 ?>
 
@@ -42,10 +42,14 @@ echo $permission;
             drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=2","l2_div",2000,15);
             drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=3&phase_no=2","l2_avg_div",2000,15);
             drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=3","l3_div",2000,15);
-                    
             drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=3&phase_no=3","l3_avg_div",2000,15);
 
-
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=1","l1_current_div",100,5);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=2","l2_current_div",100,5);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=3","l3_current_div",100,5);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=1","l1_avg_current_div",100,5);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=2","l2_avg_current_div",100,5);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=3","l3_avg_current_div",100,5);
 
 
         });
@@ -63,8 +67,7 @@ echo $permission;
 
             var options = {
                 width: 150, height: 150,
-                redFrom: 500, redTo: 1000,
-                yellowFrom:250, yellowTo: 499,
+
                 minorTicks: minor_ticks, max:max_value
             };
 
@@ -156,6 +159,49 @@ echo $permission;
                         </div>
                     </div>
                 </th>
+
+            <tr>
+
+                <th>
+                    <div class="panel-group" align="center">
+                        <div class="panel panel-danger" style="width: 1000px">
+                            <div class="panel-heading" style="width: 1000px; color: white" > Pomiar natężenia prądu</div>
+                            <div class="panel-body">
+
+
+
+                                <div ng-controller = "power2">
+                                    <table>
+                                        <tr>
+                                            <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Aktualne natężenie prądu dla: <br>  {{x.name}} </th>
+                                            <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Średnie nateżenie prądu dla: <br>  {{x.name}} </th>
+
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding: 5px" align="center"> <div id = "l1_current_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l2_current_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l3_current_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l1_avg_current_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l2_avg_current_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l3_avg_current_div"> </div> </td>
+
+                                        </tr>
+
+
+
+                                    </table>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </th>
+
+            </tr>
 
     </div>
 
