@@ -322,7 +322,7 @@ class EMS_DB{
 
         try{
 
-            $st = $this->cn->prepare("select distinct  concat('L',phase_no),phase_no from power_measurement");
+            $st = $this->cn->prepare("select distinct  name,phase_no from phase_name");
             $st->execute();
 
 
@@ -331,6 +331,37 @@ class EMS_DB{
             while($row = $st->fetch()){
 
                 $data[] = array('name'=>$row[0], 'data'=>$this->query("select result from power_measurement where phase_no=:id and time between :start and :end",array(':id'=>$row[1], ':start'=>$start,':end'=>$end)));
+
+
+
+            }
+
+            return $data;
+
+
+
+        }catch (PDOException $e){
+
+            echo $e;
+
+        }
+
+
+    }
+
+    public function prepare_measurement_of__real_power_from_range($start, $end){
+
+        try{
+
+            $st = $this->cn->prepare("select distinct name,phase_no from phase_name");
+            $st->execute();
+
+
+            $data[] = array('name'=>'time', 'data'=>$this->query("select distinct time from power_measurement where time between :start and :end  order by time asc",array(':start'=>$start,':end'=>$end)));
+
+            while($row = $st->fetch()){
+
+                $data[] = array('name'=>$row[0], 'data'=>$this->query("select (result*parameters.value) result from power_measurement join parameters on parameters.id = 'power_factor' where phase_no=:id and time between :start and :end",array(':id'=>$row[1], ':start'=>$start,':end'=>$end)));
 
 
 
@@ -390,7 +421,7 @@ class EMS_DB{
 
 
             $i = 0;
-            $st = $this->cn->prepare("select DISTINCT concat('L',phase_no) name,phase_no,result,time from power_measurement where time between :start and :end order by time asc");
+            $st = $this->cn->prepare("select DISTINCT phase_name.name,power_measurement.phase_no,result,round((result*parameters.value),2) real_power,time from power_measurement join phase_name on phase_name.phase_no = power_measurement.phase_no join parameters on parameters.id = 'power_factor' where time between :start and :end order by time asc");
             $st->bindValue(":start",$start);
             $st->bindValue(":end",$end);
             $st->execute();
@@ -443,12 +474,12 @@ class EMS_DB{
 
     }
 
-    public function get_phases_name($table){
+    public function get_phases_name(){
 
 
         try{
 
-            $st = $this->cn->prepare("select distinct concat('L',phase_no) name from $table");
+            $st = $this->cn->prepare("select name from phase_name order by phase_no ASC");
             $st->execute();
             $result = $st->fetchAll(PDO::FETCH_ASSOC);
 
