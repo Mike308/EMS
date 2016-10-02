@@ -38,7 +38,7 @@ if($cmd==1){
 
 }else if($cmd=3){
 
-    $result = json_encode($ems_db->get_phases_name("power_measurement"));
+    $result = json_encode($ems_db->get_phases_name());
 
     // echo $result;
     echo  "{".'"power"'.":"." ".$result."}";
@@ -46,7 +46,7 @@ if($cmd==1){
 
 }else if($cmd=4){
 
-    $result = json_encode($ems_db->get_phases_name("current_measurement"));
+    $result = json_encode($ems_db->get_phases_name());
 
     // echo $result;
     echo  "{".'"power"'.":"." ".$result."}";
