@@ -54,6 +54,20 @@ else if($cmd==5){
     echo  "{".'"data"'.":"." ".$result."}";
 }
 
+else if($cmd==6){
+
+    $result = json_encode($ems_db->query_for_json("select (result*parameters.value) result from power_measurement join parameters on parameters.id='power_factor' where phase_no = :phase_no order by power_measurement.id desc limit 1",array(':phase_no'=>$phase_no)),JSON_NUMERIC_CHECK);
+    echo  "{".'"data"'.":"." ".$result."}";
+}
+
+else if($cmd==7){
+
+    $result = json_encode($ems_db->query_for_json("select avg(result*parameters.value) result from power_measurement join parameters on parameters.id='power_factor' where phase_no = :phase_no",array(':phase_no'=>$phase_no)),JSON_NUMERIC_CHECK);
+    echo  "{".'"data"'.":"." ".$result."}";
+
+}
+
+
 
 
 
