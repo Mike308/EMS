@@ -44,12 +44,19 @@ $permission = $auth->get_user_prem();
             drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=3","l3_div",2000,15);
             drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=3&phase_no=3","l3_avg_div",2000,15);
 
-            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=1","l1_current_div",100,5);
-            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=2","l2_current_div",100,5);
-            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=3","l3_current_div",100,5);
-            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=1","l1_avg_current_div",100,5);
-            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=2","l2_avg_current_div",100,5);
-            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=3","l3_avg_current_div",100,5);
+            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=6&phase_no=1","l1_real_power_div",2000,15);
+            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=7&phase_no=1","l1_real_power_avg_div",2000,15);
+            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=6&phase_no=2","l2_real_power_div",2000,15);
+            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=7&phase_no=2","l2_real_power_avg_div",2000,15);
+            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=6&phase_no=3","l3_real_power_div",2000,15);
+            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=7&phase_no=3","l3_real_power_avg_div",2000,15);
+
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=1","l1_current_div",100,15);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=2","l2_current_div",100,15);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=3","l3_current_div",100,15);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=1","l1_avg_current_div",100,15);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=2","l2_avg_current_div",100,15);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=3","l3_avg_current_div",100,15);
 
 
         });
@@ -123,37 +130,79 @@ $permission = $auth->get_user_prem();
             <tr>
                 <th>
                     <div class="panel-group" align="center">
-                        <div class="panel panel-primary" style="width: 1000px">
+                        <div class="panel panel-success" style="width: 1000px">
                             <div class="panel-heading" style="width: 1000px; color: white" > Pomiar mocy pozornej </div>
                             <div class="panel-body">
 
 
 
-                                    <div ng-controller = "power2">
-                                        <table>
-                                            <tr>
-                                                <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Aktualna moc dla: <br>  {{x.name}} </th>
-                                                <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Średnia moc dla: <br>  {{x.name}} </th>
+                                <div ng-controller = "power2">
+                                    <table>
+                                        <tr>
+                                            <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Aktualna moc dla: <br>  {{x.name}} </th>
+                                            <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Średnia moc dla: <br>  {{x.name}} </th>
 
-                                            </tr>
+                                        </tr>
 
-                                            <tr>
-                                                <td style="padding: 5px" align="center"> <div id = "l1_div"> </div> </td>
-                                                <td style="padding: 5px" align="center"> <div id = "l2_div"> </div> </td>
-                                                <td style="padding: 5px" align="center"> <div id = "l3_div"> </div> </td>
-                                                <td style="padding: 5px" align="center"> <div id = "l1_avg_div"> </div> </td>
-                                                <td style="padding: 5px" align="center"> <div id = "l2_avg_div"> </div> </td>
-                                                <td style="padding: 5px" align="center"> <div id = "l3_avg_div"> </div> </td>
+                                        <tr>
+                                            <td style="padding: 5px" align="center"> <div id = "l1_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l2_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l3_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l1_avg_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l2_avg_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l3_avg_div"> </div> </td>
 
-                                            </tr>
-
-
-
-                                        </table>
+                                        </tr>
 
 
 
-                                    </div>
+                                    </table>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </th>
+
+            <tr>
+
+            <tr>
+                <th>
+                    <div class="panel-group" align="center">
+                        <div class="panel panel-info" style="width: 1000px">
+                            <div class="panel-heading" style="width: 1000px; color: white" > Pomiar mocy czynnej </div>
+                            <div class="panel-body">
+
+
+
+                                <div ng-controller = "power2">
+                                    <table>
+                                        <tr>
+                                            <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Aktualna moc dla: <br>  {{x.name}} </th>
+                                            <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Średnia moc dla: <br>  {{x.name}} </th>
+
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding: 5px" align="center"> <div id = "l1_real_power_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l2_real_power_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l3_real_power_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l1_real_power_avg_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l2_real_power_avg_div"> </div> </td>
+                                            <td style="padding: 5px" align="center"> <div id = "l3_real_power_avg_div"> </div> </td>
+
+                                        </tr>
+
+
+
+                                    </table>
+
+
+
+                                </div>
 
                             </div>
                         </div>
