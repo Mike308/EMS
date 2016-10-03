@@ -32,61 +32,7 @@ $permission = $auth->get_user_prem();
     <script src="bootstrap/respond.min.js"></script>
 
     <script type="text/javascript">
-//        google.load("visualization", "1", {packages:["gauge"]});
-//        google.setOnLoadCallback(function(){
-//
-//            drawChart("L1","controllers/EMS_Controller.php?cmd=2&phase_no=1","l1_div");
-//            drawChart("L2","controllers/EMS_Controller.php?cmd=2&phase_no=2","l2_div");
-//
-//
-//        });
-//
-//
-//        function drawChart(label,url,div_id) {
-//
-//            var chart_data = google.visualization.arrayToDataTable([
-//                ['Label', 'Value'],
-//                [label, 0],
-//
-//
-//            ]);
-//
-//
-//            var options = {
-//                width: 400, height: 400,
-//                redFrom: 90, redTo: 100,
-//                yellowFrom:75, yellowTo: 90,
-//                minorTicks: 5
-//            };
-//
-//            var chart = new google.visualization.Gauge(document.getElementById(div_id));
-//
-//
-//            chart.draw(chart_data, options);
-//
-//
-//
-//            setInterval(function() {
-//
-//                $.getJSON(url,function(data) {
-//
-//
-//
-//                    $.each(data.data, function(index,value){
-//
-//
-//
-//                        chart_data.setValue(0,1,value.data);
-//                        chart.draw(chart_data,options);
-//
-//                    });
-//
-//                });
-//
-//
-//            },1000);
-//
-//        }
+
 
 
 
