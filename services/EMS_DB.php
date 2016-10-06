@@ -515,6 +515,32 @@ class EMS_DB{
 
     }
 
+
+    public function insert_query($sql, $params){
+
+        try{
+
+            $st = $this->cn->prepare($sql);
+            foreach ($params as $parameter=>$bind){
+
+
+                $st->bindValue($parameter,$bind);
+
+
+            }
+
+            $st->execute();
+
+
+        }catch (PDOException $e){
+
+            echo "Problem: ".$e;
+
+
+        }
+
+    }
+
     public function set_parameter($ac_voltage,$power_factor){
 
         $this->update_query("update parameters set parameters.value=:value where id = 'ac_voltage'",":value",$ac_voltage);
