@@ -46,11 +46,13 @@ class Auth_Gate{
             $_SESSION['success'] = true;
             $_SESSION['user'] = $user_id[0];
             $_SESSION['perm'] = $user_permission[0];
+            header("Location: http://".localhost."/EMS2/index.php");
 
         }else{
 
             echo "Nie poprawne dane logowania";
-            $_SESSION['perm'] = 0;
+            $_SESSION['perm'] = -1;
+            header("Location: http://".localhost."/EMS2/login.php");
 
         }
 
@@ -63,6 +65,8 @@ class Auth_Gate{
         return $_SESSION['perm'];
 
     }
+    
+    
 
 
 
