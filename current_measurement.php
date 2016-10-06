@@ -88,7 +88,7 @@ $permission = $auth->get_user_prem();
             $.getJSON('controllers/EMS_Chart_Controller.php?cmd=2', function(data){
 
                 // chart 1
-                options.chart.renderTo = 'current';
+                options.chart.renderTo = 'container';
                 options.title.text = 'Natężenie prądu';
                 options.yAxis.title.text = '[A]';
                 options.xAxis.categories = data[0]['data'];
@@ -116,7 +116,7 @@ $permission = $auth->get_user_prem();
 <h2> Internetowy System Monitorowania Instalacji </h2>
 <?php $nav = new Navbar("current_measurement.php",$permission);?>
 
-<div class="container">
+<div class="container" id="container" style="width:auto;">
 
 <!--    <table align="center">-->
 <!--        <tr>-->

@@ -88,13 +88,14 @@ $permission = $auth->get_user_prem();
             $.getJSON('controllers/EMS_Chart_Controller.php?cmd=1', function(data){
 
                 // chart 1
-                options.chart.renderTo = 'power';
+                options.chart.renderTo = 'container';
                 options.title.text = 'Pobór mocy';
                 options.yAxis.title.text = 'moc [W]';
                 options.xAxis.categories = data[0]['data'];
 
                 options.series.push(data[1]);
                 options.series.push(data[2]);
+                options.series.push(data[3]);
 
                 chart1 = new Highcharts.Chart(options);
 
@@ -130,13 +131,13 @@ $permission = $auth->get_user_prem();
 <h2> Internetowy System Monitorowania Instalacji </h2>
 <?php $nav = new Navbar("power_measurement.php",$permission);?>
 
-<div class="container">
+<div id="container" class="container" style="width: auto">
 
 
 
 
 
-    <div id = "power">  </div>
+<!--    <div id = "power" style="width: 1920px; height: 1280px">  </div>-->
 
   
 
