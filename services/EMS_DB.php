@@ -255,15 +255,15 @@ class EMS_DB{
 
         try{
 
-            $st = $this->cn->prepare("select distinct  concat('L',phase_no),phase_no from power_measurement");
+            $st = $this->cn->prepare("select distinct  name,phase_no from phase_name");
             $st->execute();
 
 
-            $data[] = array('name'=>'time', 'data'=>$this->simple_query("select distinct time from power_measurement order by time asc",null));
+            $data[] = array('name'=>'time', 'data'=>$this->simple_query("select * from  (select distinct time from power_measurement order by id DESC limit 8) t_time order by t_time.time ASC ",null));
 
             while($row = $st->fetch()){
 
-             $data[] = array('name'=>$row[0], 'data'=>$this->simple_query("select result from power_measurement where phase_no=:id",$row[1]));
+             $data[] = array('name'=>$row[0], 'data'=>$this->simple_query("select * from (select result,time from power_measurement where phase_no=:id order by id desc limit 8) t_val order by t_val.time ASC ",$row[1]));
 
 
 
@@ -286,15 +286,15 @@ class EMS_DB{
 
         try{
 
-            $st = $this->cn->prepare("select distinct  concat('L',phase_no),phase_no from current_measurement");
+            $st = $this->cn->prepare("select distinct  name,phase_no from phase_name");
             $st->execute();
 
 
-            $data[] = array('name'=>'time', 'data'=>$this->simple_query("select distinct time from current_measurement order by time asc",null));
+            $data[] = array('name'=>'time', 'data'=>$this->simple_query("select * from (select distinct time from current_measurement order by id desc limit 8) t_time order by t_time.time ASC ",null));
 
             while($row = $st->fetch()){
 
-                $data[] = array('name'=>$row[0], 'data'=>$this->simple_query("select result from current_measurement where phase_no=:id",$row[1]));
+                $data[] = array('name'=>$row[0], 'data'=>$this->simple_query("select * from (select result,time from current_measurement where phase_no=:id order by id desc limit 8) t_val order by t_val.time asc",$row[1]));
 
 
 

@@ -155,11 +155,7 @@ $permission = $auth->get_user_prem();
                                         </tr>
 
 
-
                                     </table>
-
-
-
                                 </div>
 
                             </div>
