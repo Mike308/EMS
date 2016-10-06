@@ -9,6 +9,7 @@
 
 include 'GUI\Navbar.php';
 include 'services\Auth_Gate.php';
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $auth = new Auth_Gate();
 $auth->start_session();
 $permission = $auth->get_user_prem();
@@ -36,7 +37,16 @@ $permission = $auth->get_user_prem();
 
 
       <h2> Internetowy System Monitorowania Instalacji </h2>
-        <?php $nav = new Navbar("admin_panel.php",$permission);?>
+        <?php $nav = new Navbar("admin_panel.php",$permission);
+
+
+        if($permission==1){
+
+
+
+
+
+        ?>
 
 
 
@@ -46,7 +56,7 @@ $permission = $auth->get_user_prem();
                   <th>
                       <div class="panel-group" align="center">
                           <div class="panel panel-primary" style="width: 300px">
-                              <div class="panel-heading" style="width: 300px; color: white" > Logowanie </div>
+                              <div class="panel-heading" style="width: 300px; color: white" > Dodaj nowego użytkownika </div>
                               <div class="panel-body">
 
                                   <form action="controllers/EMS_User_Controller.php" method="post">
@@ -246,7 +256,19 @@ $permission = $auth->get_user_prem();
 
 
 
+
+
     </body>
+
+        <?php } else {
+
+
+            ?> <div id="container"> <h2> Nie masz dostępu do tego miejsca!!! </h2> </div>
+
+            <?php } ?>
+
+
+
 
 
 </html>
