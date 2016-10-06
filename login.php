@@ -16,8 +16,11 @@
  */
 
 include 'GUI\Navbar.php';
-include 'services\Authorisation.php';
+include 'services\Auth_Gate.php';
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
+$auth = new Auth_Gate();
+$auth->start_session();
+$permission = $auth->get_user_prem();
 ?>
 
 
@@ -46,6 +49,11 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 <?php $nav = new Navbar("index.php",0);?>
 
 <div class="container">
+
+    <?php if($permission==-1) { ?> <div ng-show = "!names.length" class="alert alert-dismissable alert-danger" style="text-align: center">
+        <!--                <button type="button" class="close" data-dismiss="alert">×</button>-->
+        <strong>Login lub hasło są błędne</strong>
+    </div> <?php } ?>
 
     <div class="panel-group" align="center">
         <div class="panel panel-primary" style="width: 500px">
