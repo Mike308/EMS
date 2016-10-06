@@ -33,6 +33,12 @@ class Authorisation extends EMS_DB {
 
     }
     
+    public function insert_new_user($login, $password){
+        
+        $this->insert_query("insert into users (login,password,permission) values (:login,:password,1)",array(":login"=>$login,":password"=>$password));
+        
+    }
+    
     
 
 
