@@ -25,7 +25,7 @@ class Authorisation extends EMS_DB {
 
     }
 
-    public function get_user_premission($user_id){
+    public function get_user_permission($user_id){
 
         $result = $this->query("select permission from users where id = :id",array(':id'=>$user_id));
 

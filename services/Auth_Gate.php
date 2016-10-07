@@ -38,7 +38,7 @@ class Auth_Gate{
         $auth_service = new Authorisation(user_db,password,localhost);
         $auth_service->open_db();
         $user_id = $auth_service->get_user_id($login, $password);
-        $user_permission = $auth_service->get_user_premission($user_id[0]);
+        $user_permission = $auth_service->get_user_permission($user_id[0]);
 
 
         if($user_id != null){
@@ -60,7 +60,7 @@ class Auth_Gate{
 
     }
 
-    public function get_user_prem(){
+    public function get_user_perm(){
 
         return $_SESSION['perm'];
 

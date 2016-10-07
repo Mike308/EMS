@@ -10,7 +10,7 @@ include 'GUI\Navbar.php';
 include 'services\Auth_Gate.php';
 $auth = new Auth_Gate();
 $auth->start_session();
-$permission = $auth->get_user_prem();
+$permission = $auth->get_user_perm();
 
 ?>
 
