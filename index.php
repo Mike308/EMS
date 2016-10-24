@@ -34,29 +34,43 @@ $permission = $auth->get_user_perm();
     <script src="bootstrap/respond.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type="text/javascript">
+
+
+
+
         google.load("visualization", "1", {packages:["gauge"]});
         google.setOnLoadCallback(function(){
+            
+        //  get_parameter_from_url("controllers/EMS_Gauge_Set_Parameter_Controller.php?id=max_Value_A");
+            var max_A = getValue("controllers/EMS_Gauge_Set_Parameter_Controller.php?id=max_Value_A");
+            var minor_tick_A = getValue("controllers/EMS_Gauge_Set_Parameter_Controller.php?id=minor_tick_A");
+            var max_VA = getValue("controllers/EMS_Gauge_Set_Parameter_Controller.php?id=max_Value_VA");
+            var minor_tick_VA = getValue("controllers/EMS_Gauge_Set_Parameter_Controller.php?id=minor_tick_VA");
 
-            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=1","l1_div",2000,15);
-            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=3&phase_no=1","l1_avg_div",2000,15);
-            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=2","l2_div",2000,15);
-            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=3&phase_no=2","l2_avg_div",2000,15);
-            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=3","l3_div",2000,15);
-            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=3&phase_no=3","l3_avg_div",2000,15);
 
-            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=6&phase_no=1","l1_real_power_div",2000,15);
-            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=7&phase_no=1","l1_real_power_avg_div",2000,15);
-            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=6&phase_no=2","l2_real_power_div",2000,15);
-            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=7&phase_no=2","l2_real_power_avg_div",2000,15);
-            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=6&phase_no=3","l3_real_power_div",2000,15);
-            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=7&phase_no=3","l3_real_power_avg_div",2000,15);
 
-            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=1","l1_current_div",100,15);
-            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=2","l2_current_div",100,15);
-            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=3","l3_current_div",100,15);
-            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=1","l1_avg_current_div",100,15);
-            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=2","l2_avg_current_div",100,15);
-            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=3","l3_avg_current_div",100,15);
+            console.log("Value "+max_A);
+
+            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=1","l1_div",max_VA,minor_tick_VA);
+            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=3&phase_no=1","l1_avg_div",max_VA,minor_tick_VA);
+            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=2","l2_div",max_VA,minor_tick_VA);
+            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=3&phase_no=2","l2_avg_div",max_VA,minor_tick_VA);
+            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=0&phase_no=3","l3_div",max_VA,minor_tick_VA);
+            drawChart("VA","controllers/EMS_Gauge_Controller.php?cmd=3&phase_no=3","l3_avg_div",max_VA,minor_tick_VA);
+
+            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=6&phase_no=1","l1_real_power_div",max_VA,minor_tick_VA);
+            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=7&phase_no=1","l1_real_power_avg_div",max_VA,minor_tick_VA);
+            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=6&phase_no=2","l2_real_power_div",max_VA,minor_tick_VA);
+            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=7&phase_no=2","l2_real_power_avg_div",max_VA,minor_tick_VA);
+            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=6&phase_no=3","l3_real_power_div",max_VA,minor_tick_VA);
+            drawChart("W","controllers/EMS_Gauge_Controller.php?cmd=7&phase_no=3","l3_real_power_avg_div",max_VA,minor_tick_VA);
+
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=1","l1_current_div",max_A,minor_tick_A);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=2","l2_current_div",max_A,minor_tick_A);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=1&phase_no=3","l3_current_div",max_A,minor_tick_A);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=1","l1_avg_current_div",max_A,minor_tick_A);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=2","l2_avg_current_div",max_A,minor_tick_A);
+            drawChart("A","controllers/EMS_Gauge_Controller.php?cmd=4&phase_no=3","l3_avg_current_div",max_A,minor_tick_A);
 
 
         });
@@ -104,6 +118,84 @@ $permission = $auth->get_user_perm();
             },1000);
 
         }
+
+
+
+        function getValue(my_url){
+
+            var param = 0;
+
+            var value= $.ajax({
+                url: my_url,
+                async: false
+            }).responseText;
+
+            return value;
+
+//            $.each(value.data,function (index,value) {
+//
+//                param = value.data;
+//                console.log(param);
+//
+//            });
+
+        }
+
+//        function  process_json(data) {
+//
+//            var param = 0;
+//
+//            console.log("process_json");
+//
+//            $.each(data.data,function (index,value) {
+//
+//
+//                param = value.data;
+//                console.log(param);
+//
+//
+//            });
+//
+//            return param;
+//
+//
+//        }
+
+
+        function get_parameter_from_url(url) {
+
+            var param = 0;
+            var y = 0;
+
+
+            console.log("Get Parameter");
+
+            $.getJSON(url,function (data) {
+
+                $.each(data.data,function (index,value) {
+
+                    param = value.data;
+
+
+                });
+
+                y =  get_gauge_parameter(param);
+
+            });
+
+
+            return y;
+
+
+
+        }
+
+        function get_gauge_parameter(param){
+
+            return param;
+        }
+
+
 
 
         var app = angular.module('myApp', []);
