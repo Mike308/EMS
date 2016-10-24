@@ -203,7 +203,7 @@ class EMS_DB{
 
 
 
-//                if(count($params)>1){
+
 
                     foreach ($params as $parameter=>$bind){
 
@@ -213,13 +213,6 @@ class EMS_DB{
 
                     }
 
-//                }
-
-
-//            }else {
-//
-//                $st->bindValue()
-//            }
 
 
 
@@ -495,23 +488,48 @@ class EMS_DB{
 
     }
 
-    public function update_query($sql,$parameter,$bind){
+
+
+
+    public function update_query_with_bind($sql, $params){
+
 
         try{
 
             $st = $this->cn->prepare($sql);
-            $st->bindValue($parameter,$bind);
+
+
+
+
+
+
+            foreach ($params as $parameter=>$bind){
+
+
+                $st->bindValue($parameter,$bind);
+
+
+            }
+
+
+
             $st->execute();
+
+
+
+
+
+
+
+
 
 
         }catch (PDOException $e){
 
-
             echo  "Problem: ".$e;
 
-
-
         }
+
 
     }
 
@@ -541,13 +559,7 @@ class EMS_DB{
 
     }
 
-    public function set_parameter($ac_voltage,$power_factor){
 
-        $this->update_query("update parameters set parameters.value=:value where id = 'ac_voltage'",":value",$ac_voltage);
-        $this->update_query("update parameters set parameters.value=:value where id = 'power_factor'",":value",$power_factor);
-
-
-    }
 
     public function set_phase_name($name,$phase_no){
 
