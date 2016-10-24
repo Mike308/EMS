@@ -53,7 +53,7 @@ $permission = $auth->get_user_perm();
 
           <table>
               <tr>
-                  <th>
+                  <th style="padding: 5px">
                       <div class="panel-group" align="center">
                           <div class="panel panel-primary" style="width: 300px">
                               <div class="panel-heading" style="width: 300px; color: white" > Dodaj nowego użytkownika </div>
@@ -83,25 +83,33 @@ $permission = $auth->get_user_perm();
 
                   <th style="padding: 5px">
                       <div class="panel-group" align="center">
-                          <div class="panel panel-primary" style="width: 300px">
-                              <div class="panel-heading" style="width: 300px; color: white" > Ustawienie napięcia oraz współczynnika mocy </div>
+                          <div class="panel panel-primary" style="width: 350px">
+                              <div class="panel-heading" style="width: 350px; color: white" > Parametry Systemu  </div>
                               <div class="panel-body">
 
-                                  <form action="controllers/EMS_Parameters_Controller.php" method="post">
+                                  <form action="controllers/EMS_Set_Parameters_Controller.php" method="post">
                                       <div class="form-group">
-                                          <label for="ac_voltage">Napięcie: </label>
-                                          <input type="text" class="form-control" id="ac_voltage" name="ac_voltage" style="text-align: center">
+                                          <label for="phase_name">Wartość: </label>
+                                          <input type="text" class="form-control" id="value" name="value" style="text-align: center">
 
                                       </div>
 
                                       <div class="form-group">
-                                          <label for="power_factor">Współczynnik mocy:  </label>
-                                          <input type="text" class="form-control" id="power_factor" name="power_factor" style="text-align: center">
+                                          <label for="phase_no">Parametr:  </label>
+                                          <select id = "phase_no" name="id" class="form-control">
+                                              <option value="ac_voltage"> Napięcie zmienne w sieci </option>
+                                              <option value="power_factor"> Współczynnik mocy </option>
+                                              <option value="minor_tick_A"> Skok dla wskaźnika natężenia prądu  </option>
+                                              <option value="max_value_A"> Maksymalna Wartość Prądu </option>
+                                              <option value="minor_tick_VA"> Skok dla wskaźnika mocy czynnej i pozornej   </option>
+                                              <option value="max_value_VA"> Maksymalna Wartość Mocy Czynnej i Pozornej  </option>
+                                          </select>
+
                                       </div>
 
 
                                       <div class="form-group">
-                                          <input type="submit" class="btn btn-primary" value="Ustaw parametry">
+                                          <input type="submit" class="btn btn-primary" value="Ustaw">
                                       </div>
                                   </form>
 
@@ -143,6 +151,11 @@ $permission = $auth->get_user_perm();
                           </div>
                       </div>
                   </th>
+
+
+
+
+
 
                   <th style="padding: 5px">
                       <div class="panel-group" align="center">
