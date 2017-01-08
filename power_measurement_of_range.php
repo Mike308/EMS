@@ -6,8 +6,8 @@
  * Time: 18:07
  */
 
-include 'GUI\Navbar.php';
-include 'services\Auth_Gate.php';
+include 'GUI/Navbar.php';
+include 'services/Auth_Gate.php';
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $auth = new Auth_Gate();
 $auth->start_session();
@@ -24,7 +24,7 @@ $end = $_GET['end'];
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="http://code.highcharts.com/stock/highstock.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <meta charset="utf-8">
     <title>ISMIE</title>
@@ -121,7 +121,8 @@ $end = $_GET['end'];
                     x: -20
                 },
                 xAxis: {
-                    categories: []
+                    categories: [],
+                    max: 8
                 },
                 yAxis: {
                     title: {
@@ -145,6 +146,9 @@ $end = $_GET['end'];
                     x: -10,
                     y: 100,
                     borderWidth: 0
+                },
+                scrollbar: {
+                    enabled: true
                 },
                 series: []
             };
@@ -163,7 +167,8 @@ $end = $_GET['end'];
                     x: -20
                 },
                 xAxis: {
-                    categories: []
+                    categories: [],
+                    max: 8
                 },
                 yAxis: {
                     title: {
@@ -187,6 +192,10 @@ $end = $_GET['end'];
                     x: -10,
                     y: 100,
                     borderWidth: 0
+                },
+
+                scrollbar: {
+                    enabled: true
                 },
                 series: []
             };
