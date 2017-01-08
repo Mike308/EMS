@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="4197614d-8597-4405-b81f-c33bb6c8e616" name="ems" url="http://192.168.0.103">
-        <fileTransfer host="192.168.0.103" port="22" accessType="SFTP" username="pi">
+        <fileTransfer host="192.168.0.103" port="22" accessType="SFTP" username="www-dev">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

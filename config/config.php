@@ -7,6 +7,6 @@
  */
 
 
-define("localhost","localhost");
+define("localhost","192.168.0.103");
 define("user_db","root");
-define("password","");
+define("password","code6699");

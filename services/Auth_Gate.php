@@ -7,7 +7,7 @@
  */
 
 include 'Authorisation.php';
-include "$_SERVER[DOCUMENT_ROOT]/EMS2/config/config.php";
+include "../config/config.php";
 
 
 class Auth_Gate{
@@ -46,13 +46,13 @@ class Auth_Gate{
             $_SESSION['success'] = true;
             $_SESSION['user'] = $user_id[0];
             $_SESSION['perm'] = $user_permission[0];
-            header("Location: http://".localhost."/EMS2/index.php");
+            header("Location: http://".localhost."/index.php");
 
         }else{
 
             echo "Nie poprawne dane logowania";
             $_SESSION['perm'] = -1;
-            header("Location: http://".localhost."/EMS2/login.php");
+            header("Location: http://".localhost."/login.php");
 
         }
 

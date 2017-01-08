@@ -40,7 +40,7 @@ class EMS_DB{
 
         try{
 
-            $this->cn = new PDO( "mysql:host=$this->url; dbname=ems2", $this->user, $this->password );
+            $this->cn = new PDO( "mysql:host=localhost; dbname=ems2", $this->user, $this->password );
             $this->cn->setAttribute ( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION ); // seting mode for catching errors
 
         }catch (PDOException $e){

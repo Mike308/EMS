@@ -6,8 +6,8 @@
  * Time: 18:07
  */
 
-include 'GUI\Navbar.php';
-include 'services\Auth_Gate.php';
+include 'GUI/Navbar.php';
+include 'services/Auth_Gate.php';
 $auth = new Auth_Gate();
 $auth->start_session();
 $permission = $auth->get_user_perm();
@@ -21,7 +21,7 @@ $permission = $auth->get_user_perm();
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="http://code.highcharts.com/stock/highstock.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <meta charset="utf-8">
     <title>ISMIE</title>
@@ -54,7 +54,8 @@ $permission = $auth->get_user_perm();
                     x: -20
                 },
                 xAxis: {
-                    categories: []
+                    categories: [],
+
                 },
                 yAxis: {
                     title: {
