@@ -24,7 +24,7 @@ $end = $_GET['end'];
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script type="text/javascript" src="http://code.highcharts.com/stock/highstock.js"></script>
+    <script type="text/javascript" src="http://code.highcharts.com/stock/5.0.3/highstock.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <meta charset="utf-8">
     <title>ISMIE</title>
@@ -39,22 +39,25 @@ $end = $_GET['end'];
         google.load("visualization", "1", {packages:["gauge"]});
         google.setOnLoadCallback(function(){
 
-            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_div");
-            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=1&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_avg_div");
-            drawChart("W","controllers/EMS_Gauge_Range_Controller.php?cmd=6&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_real_power_div");
-            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_div");
-            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=1&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_avg_div");
-            drawChart("W","controllers/EMS_Gauge_Range_Controller.php?cmd=6&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_real_power_div");
-            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_div");
-            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=1&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_avg_div");
-            drawChart("W","controllers/EMS_Gauge_Range_Controller.php?cmd=6&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_real_power_div");
-            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=2&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","sum_div");
+            var max_VA = getValue("controllers/EMS_Gauge_Set_Parameter_Controller.php?id=max_Value_VA");
+            var minor_tick_VA = getValue("controllers/EMS_Gauge_Set_Parameter_Controller.php?id=minor_tick_VA");
+
+            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_div",max_VA,minor_tick_VA);
+            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=1&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_avg_div",max_VA,minor_tick_VA);
+            drawChart("W","controllers/EMS_Gauge_Range_Controller.php?cmd=6&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_real_power_div",max_VA,minor_tick_VA);
+            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_div",max_VA,minor_tick_VA);
+            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=1&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_avg_div",max_VA,minor_tick_VA);
+            drawChart("W","controllers/EMS_Gauge_Range_Controller.php?cmd=6&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_real_power_div",max_VA,minor_tick_VA);
+            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=0&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_div",max_VA,minor_tick_VA);
+            drawChart("VA","controllers/EMS_Gauge_Range_Controller.php?cmd=1&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_avg_div",max_VA,minor_tick_VA);
+            drawChart("W","controllers/EMS_Gauge_Range_Controller.php?cmd=6&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_real_power_div",max_VA,minor_tick_VA);
+
 
 
         });
 
 
-        function drawChart(label,url,div_id) {
+        function drawChart(label,url,div_id,max_value,minor_ticks) {
 
             var chart_data = google.visualization.arrayToDataTable([
                 ['Label', 'Value'],
@@ -66,9 +69,8 @@ $end = $_GET['end'];
 
             var options = {
                 width: 150, height: 150,
-                redFrom: 500, redTo: 1000,
-                yellowFrom:250, yellowTo: 499,
-                minorTicks: 15, max:2000
+
+                minorTicks: minor_ticks, max: max_value
             };
 
             var chart = new google.visualization.Gauge(document.getElementById(div_id));
@@ -77,24 +79,34 @@ $end = $_GET['end'];
             chart.draw(chart_data, options);
 
 
+            setInterval(function () {
+
+                $.getJSON(url, function (data) {
 
 
-
-                $.getJSON(url,function(data) {
-
-                    console.log(url);
-
-                    $.each(data.data, function(index,value){
+                    $.each(data.data, function (index, value) {
 
 
-
-                        chart_data.setValue(0,1,value.data);
-                        chart.draw(chart_data,options);
+                        chart_data.setValue(0, 1, value.data);
+                        chart.draw(chart_data, options);
 
                     });
 
                 });
+            }, 1000);
 
+        }
+
+        function getValue(my_url){
+
+            var param = 0;
+
+            var value= $.ajax({
+                url: my_url,
+                async: false
+            }).responseText;
+
+            return value;
 
 
 
@@ -200,8 +212,8 @@ $end = $_GET['end'];
                 series: []
             };
 
-            var chart1,
-                chart2;
+            var chart1;
+            var   chart2;
 
             $.getJSON('controllers/EMS_Chart_Range_Controller.php?cmd=1&start=<?php echo $start?>&end=<?php echo $end?>', function(data){
 
@@ -225,7 +237,8 @@ $end = $_GET['end'];
             $.getJSON('controllers/EMS_Chart_Range_Controller.php?cmd=3&start=<?php echo $start?>&end=<?php echo $end?>', function(data){
 
                 // chart 1
-                options2.chart.renderTo = 'real_power';
+                console.log("OK");
+                options2.chart.renderTo = 'real_power2';
                 options2.title.text = 'Moc czynna';
                 options2.yAxis.title.text = 'moc [W]';
                 options2.xAxis.categories = data[0]['data'];
@@ -233,6 +246,10 @@ $end = $_GET['end'];
                 options2.series.push(data[1]);
                 options2.series.push(data[2]);
                 options2.series.push(data[3]);
+
+                console.log(data[1]);
+                console.log(data[2]);
+                console.log(data[3]);
 
                 chart2 = new Highcharts.Chart(options2);
 
@@ -244,14 +261,14 @@ $end = $_GET['end'];
         });
 
         var app = angular.module('myApp', [])
-        .controller('power', function($scope, $http) {
-            $http.get("controllers/EMS_Table_Controller.php?cmd=1&start=<?php echo $start?>&end=<?php echo $end?>")
-                 .then(function (response) {$scope.names = response.data.power;});
-        })
-        .controller('power2', function($scope, $http) {
-            $http.get("controllers/EMS_Table_Controller.php?cmd=3&start=<?php echo $start?>&end=<?php echo $end?>")
-                .then(function (response) {$scope.names = response.data.power;});
-        });
+            .controller('power', function($scope, $http) {
+                $http.get("controllers/EMS_Table_Controller.php?cmd=1&start=<?php echo $start?>&end=<?php echo $end?>")
+                    .then(function (response) {$scope.names = response.data.power;});
+            })
+            .controller('power2', function($scope, $http) {
+                $http.get("controllers/EMS_Table_Controller.php?cmd=3&start=<?php echo $start?>&end=<?php echo $end?>")
+                    .then(function (response) {$scope.names = response.data.power;});
+            });
 
 
     </script>
@@ -263,18 +280,22 @@ $end = $_GET['end'];
 <h2> Internetowy System Monitorowania Instalacji </h2>
 <?php $nav = new Navbar("power_measurement.php",$permission);?>
 
+<!--<div id = "power" style="padding-bottom: 15px">  </div>-->
+<!---->
+<!--<div id = "real_power2" style="padding-bottom: 15px">  </div>-->
+
 <div class="container">
 
 
 
+    <div id = "power" style="padding-bottom: 15px">  </div>
+
+    <div id = "real_power2" style="padding-bottom: 15px"> TEST!!!! </div>
 
 
 
 
 
-    <div id = "power" style="padding-bottom: 5%">  </div>
-
-    <div id = "real_power" style="padding-bottom: 5%">  </div>
 
     <div ng-app="myApp">
 
@@ -283,7 +304,7 @@ $end = $_GET['end'];
                 <tr>
                     <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Maksymalna moc dla: <br>  {{x.name}} </th>
                     <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Średnia moc dla: <br>  {{x.name}} </th>
-                    <th style="padding: 5px; text-align: center" align="center"> Całkowita moc pozorna <br> <br></th>
+
                 </tr>
 
                 <tr>
@@ -293,12 +314,12 @@ $end = $_GET['end'];
                     <td style="padding: 5px" align="center"> <div id = "l1_avg_div"> </div> </td>
                     <td style="padding: 5px" align="center"> <div id = "l2_avg_div"> </div> </td>
                     <td style="padding: 5px" align="center"> <div id = "l3_avg_div"> </div> </td>
-                    <td style="padding: 5px" align="center"> <div id = "sum_div"> </div> </td>
+
                 </tr>
-                
+
                 <tr>
                     <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Maksymalna moc czynna dla <br> {{x.name}} </th>
-                    <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Maksymalna moc czynna dla <br> {{x.name}} </th>
+
                 </tr>
 
                 <tr>
@@ -319,13 +340,13 @@ $end = $_GET['end'];
 
 
             <div ng-show = "!names.length" class="alert alert-dismissable alert-danger" style="text-align: center">
-<!--                <button type="button" class="close" data-dismiss="alert">×</button>-->
+                <!--                <button type="button" class="close" data-dismiss="alert">×</button>-->
                 <strong>Brak danych w tym zakresie dat!</strong>
             </div>
 
-<!--         <div ng-show = "names.lenght"> -->
-<!--             Szukaj po fazie: <input type="text" class="form-control" ng-model="search.name">-->
-<!--         </div>-->
+            <!--         <div ng-show = "names.lenght"> -->
+            <!--             Szukaj po fazie: <input type="text" class="form-control" ng-model="search.name">-->
+            <!--         </div>-->
 
 
             <table ng-show="names.length" class="table table-striped table-hover ">
