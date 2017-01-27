@@ -51,7 +51,7 @@ $permission = $auth->get_user_perm();
 <div class="container">
 
     <?php if($permission==-1) { ?> <div ng-show = "!names.length" class="alert alert-dismissable alert-danger" style="text-align: center">
-        <!--                <button type="button" class="close" data-dismiss="alert">×</button>-->
+        
         <strong>Login lub hasło są błędne</strong>
     </div> <?php } ?>
 

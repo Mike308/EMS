@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47ebcdc0-3212-4343-829f-0db98fbb4860" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/webServers.xml" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel.php" afterPath="$PROJECT_DIR$/admin_panel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/config.php" afterPath="$PROJECT_DIR$/config/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/current_measurement.php" afterPath="$PROJECT_DIR$/current_measurement.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/current_measurement_of_range.php" afterPath="$PROJECT_DIR$/current_measurement_of_range.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login.php" afterPath="$PROJECT_DIR$/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/power_measurement.php" afterPath="$PROJECT_DIR$/power_measurement.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/power_measurement_of_range.php" afterPath="$PROJECT_DIR$/power_measurement_of_range.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/Auth_Gate.php" afterPath="$PROJECT_DIR$/services/Auth_Gate.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/EMS_DB.php" afterPath="$PROJECT_DIR$/services/EMS_DB.php" />
     </list>
     <ignored path="EMS2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,81 +43,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EMS_DB.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/EMS_DB.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="447" column="178" selection-start-line="447" selection-start-column="38" selection-end-line="447" selection-end-column="178" />
-              <folding>
-                <marker date="1483895260919" expanded="true" signature="917:1005" placeholder="select resul... power_measurement" />
-                <marker date="1483895260919" expanded="true" signature="1449:1539" placeholder="select resul... current_measurement" />
-                <marker date="1483895260919" expanded="true" signature="3427:3473" placeholder="select disti... power_measurement" />
-                <marker date="1483895260919" expanded="true" signature="3580:3697" placeholder="select * fro... t_time" />
-                <marker date="1483895260919" expanded="true" signature="3596:3652" placeholder="select disti... " />
-                <marker date="1483895260919" expanded="true" signature="3596:3664" placeholder="select disti... " />
-                <marker date="1483895260919" expanded="true" signature="3825:3926" placeholder="select * fro... result" />
-                <marker date="1483895260919" expanded="true" signature="3825:3956" placeholder="select * fro... result" />
-                <marker date="1483895260919" expanded="true" signature="3825:3968" placeholder="select * fro... result" />
-                <marker date="1483895260919" expanded="true" signature="3840:3900" placeholder="select resul... power_measurement" />
-                <marker date="1483895260919" expanded="true" signature="3840:3925" placeholder="select resul... power_measurement" />
-                <marker date="1483895260919" expanded="true" signature="4200:4246" placeholder="select disti... current_measurement" />
-                <marker date="1483895260919" expanded="true" signature="4353:4471" placeholder="select * fro... t_time" />
-                <marker date="1483895260919" expanded="true" signature="4368:4426" placeholder="select disti... " />
-                <marker date="1483895260919" expanded="true" signature="4368:4438" placeholder="select disti... " />
-                <marker date="1483895260919" expanded="true" signature="4602:4703" placeholder="select * fro... result" />
-                <marker date="1483895260919" expanded="true" signature="4602:4705" placeholder="select * fro... result" />
-                <marker date="1483895260919" expanded="true" signature="4602:4735" placeholder="select * fro... result" />
-                <marker date="1483895260919" expanded="true" signature="4617:4631" placeholder="select resul... " />
-                <marker date="1483895260919" expanded="true" signature="4617:4679" placeholder="select resul... current_measurement" />
-                <marker date="1483895260919" expanded="true" signature="4617:4703" placeholder="select resul... current_measurement" />
-                <marker date="1483895260919" expanded="true" signature="5076:5112" placeholder="select disti... power_measurement" />
-                <marker date="1483895260919" expanded="true" signature="5076:5122" placeholder="select disti... phase_name" />
-                <marker date="1483895260919" expanded="true" signature="5222:5319" placeholder="select disti... " />
-                <marker date="1483895260919" expanded="true" signature="5474:5562" placeholder="select resul... power_measurement" />
-                <marker date="1483895260919" expanded="true" signature="5877:5922" placeholder="select disti... phase_name" />
-                <marker date="1483895260919" expanded="true" signature="6022:6119" placeholder="select disti... " />
-                <marker date="1483895260919" expanded="true" signature="6274:6438" placeholder="select resul... power_measurement" />
-                <marker date="1483895260919" expanded="true" signature="6749:6820" placeholder="select disti... current_measurement" />
-                <marker date="1483895260919" expanded="true" signature="6920:7019" placeholder="select disti... " />
-                <marker date="1483895260919" expanded="true" signature="7174:7264" placeholder="select resul... current_measurement" />
-                <marker date="1483895260919" expanded="true" signature="7608:7918" placeholder="select DISTI... " />
-                <marker date="1483895260919" expanded="true" signature="7615:7918" placeholder="select conca... power_measurement" />
-                <marker date="1483895260919" expanded="true" signature="8370:8510" placeholder="select DISTI... " />
-                <marker date="1483895260919" expanded="true" signature="8867:8884" placeholder="select disti... ${$table}" />
-                <marker date="1483895260919" expanded="true" signature="8867:8894" placeholder="select name phase_name" />
-                <marker date="1483895260919" expanded="true" signature="8867:8916" placeholder="select name phase_name" />
-                <marker date="1483895260919" expanded="true" signature="9924:9985" placeholder="update phase... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="current_measurement_of_range.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="current_measurement_of_range.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/current_measurement_of_range.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="147" column="18" selection-start-line="147" selection-start-column="18" selection-end-line="147" selection-end-column="18" />
+            <state relative-caret-position="-833">
+              <caret line="118" column="24" selection-start-line="118" selection-start-column="24" selection-end-line="118" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EMS_Chart_Range_Controller.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/EMS_Chart_Range_Controller.php">
+      <file leaf-file-name="EMS_time_controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/EMS_time_controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="530">
-              <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EMS_Table_Controller.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/EMS_Table_Controller.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="33" column="71" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="71" />
-              <folding />
+            <state relative-caret-position="306">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding>
+                <marker date="1474069188489" expanded="true" signature="275:336" placeholder="select disti... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,28 +68,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-663">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logout.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/logout.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="current_measurement.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/current_measurement.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="96" />
+            <state relative-caret-position="697">
+              <caret line="46" column="19" selection-start-line="46" selection-start-column="10" selection-end-line="47" selection-end-column="112" />
               <folding />
             </state>
           </provider>
@@ -161,28 +78,110 @@
       <file leaf-file-name="power_measurement.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/power_measurement.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
+            <state relative-caret-position="830">
+              <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="power_measurement_of_range.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="current_measurement.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/current_measurement.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1071">
+              <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="96" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="816">
+              <caret line="53" column="8" selection-start-line="52" selection-start-column="4" selection-end-line="55" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="power_measurement_of_range.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/power_measurement_of_range.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="149" column="16" selection-start-line="149" selection-start-column="16" selection-end-line="151" selection-end-column="18" />
+            <state relative-caret-position="357">
+              <caret line="26" column="78" selection-start-line="26" selection-start-column="78" selection-end-line="26" selection-end-column="78" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#0;n#tr#0;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#1;n#tr#0;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#3;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#4;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#5;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#0;n#tr#2;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#3;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#3;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#2;n#tr#3;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EMS_Chart_Range_Controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/EMS_Chart_Range_Controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="609">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EMS_Chart_Controller.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/EMS_Chart_Controller.php">
+      <file leaf-file-name="EMS_DB.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/services/EMS_DB.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
+            <state relative-caret-position="237">
+              <caret line="344" column="20" selection-start-line="344" selection-start-column="20" selection-end-line="344" selection-end-column="20" />
+              <folding>
+                <marker date="1483895260919" expanded="true" signature="917:1005" placeholder="select resul... power_measurement" />
+                <marker date="1483895260919" expanded="true" signature="1449:1539" placeholder="select resul... current_measurement" />
+                <marker date="1483895260919" expanded="true" signature="3427:3473" placeholder="select disti... phase_name" />
+                <marker date="1483895260919" expanded="true" signature="3580:3697" placeholder="select * fro... t_time" />
+                <marker date="1483895260919" expanded="true" signature="3596:3664" placeholder="select disti... " />
+                <marker date="1483895260919" expanded="true" signature="3825:3956" placeholder="select * fro... result" />
+                <marker date="1483895260919" expanded="true" signature="3840:3925" placeholder="select resul... " />
+                <marker date="1483895260919" expanded="true" signature="4200:4246" placeholder="select disti... phase_name" />
+                <marker date="1483895260919" expanded="true" signature="4353:4471" placeholder="select * fro... t_time" />
+                <marker date="1483895260919" expanded="true" signature="4368:4438" placeholder="select disti... " />
+                <marker date="1483895260919" expanded="true" signature="4602:4735" placeholder="select * fro... result" />
+                <marker date="1483895260919" expanded="true" signature="4617:4704" placeholder="select resul... " />
+                <marker date="1483895260919" expanded="true" signature="5076:5122" placeholder="select disti... phase_name" />
+                <marker date="1483895260919" expanded="true" signature="5222:5319" placeholder="select disti... " />
+                <marker date="1483895260919" expanded="true" signature="5474:5562" placeholder="select resul... power_measurement" />
+                <marker date="1483895260919" expanded="true" signature="5877:5922" placeholder="select disti... phase_name" />
+                <marker date="1483895260919" expanded="true" signature="6022:6119" placeholder="select disti... " />
+                <marker date="1483895260919" expanded="true" signature="6274:6438" placeholder="select (resu... power_measurement" />
+                <marker date="1483895260919" expanded="true" signature="6749:6820" placeholder="select disti... current_measurement" />
+                <marker date="1483895260919" expanded="true" signature="6920:7019" placeholder="select disti... " />
+                <marker date="1483895260919" expanded="true" signature="7174:7264" placeholder="select resul... current_measurement" />
+                <marker date="1483895260919" expanded="true" signature="7608:7918" placeholder="select DISTI... " />
+                <marker date="1483895260919" expanded="true" signature="8370:8510" placeholder="select DISTI... " />
+                <marker date="1483895260919" expanded="true" signature="8867:8916" placeholder="select name phase_name" />
+                <marker date="1483895260919" expanded="true" signature="9924:9985" placeholder="update phase... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Navbar.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GUI/Navbar.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1428">
+              <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -216,16 +215,16 @@
         <option value="$PROJECT_DIR$/controllers/EMS_Gauge_Parameters.php" />
         <option value="$PROJECT_DIR$/controllers/EMS_Gauge_Set_Parameter_Controller.php" />
         <option value="$PROJECT_DIR$/controllers/EMS_Set_Parameters_Controller.php" />
-        <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/admin_panel.php" />
-        <option value="$PROJECT_DIR$/config/config.php" />
         <option value="$PROJECT_DIR$/services/Auth_Gate.php" />
         <option value="$PROJECT_DIR$/services/EMS_DB.php" />
         <option value="$PROJECT_DIR$/power_measurement.php" />
         <option value="$PROJECT_DIR$/current_measurement.php" />
-        <option value="$PROJECT_DIR$/power_measurement_of_range.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/config/config.php" />
         <option value="$PROJECT_DIR$/current_measurement_of_range.php" />
+        <option value="$PROJECT_DIR$/power_measurement_of_range.php" />
       </list>
     </option>
   </component>
@@ -267,6 +266,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -358,11 +358,10 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="c:\program files (x86)\nodejs\node.exe" />
@@ -450,36 +449,41 @@
       <workItem from="1478022951682" duration="30000" />
       <workItem from="1478955897437" duration="706000" />
       <workItem from="1483711944053" duration="8747000" />
-      <workItem from="1483894494213" duration="4325000" />
+      <workItem from="1483894494213" duration="4921000" />
+      <workItem from="1485094648288" duration="5731000" />
+      <workItem from="1485107845909" duration="1889000" />
+      <workItem from="1485187605298" duration="6873000" />
+      <workItem from="1485276781257" duration="4930000" />
+      <workItem from="1485360430651" duration="11640000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="204347000" />
+    <option name="totallyTimeSpent" value="236006000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1040" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34892473" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36827958" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08924731" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3272933" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13363533" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14852607" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -664,20 +668,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/EMS_Parameters_Controller.php" />
-    <entry file="file://$PROJECT_DIR$/GUI/Navbar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="77" column="9" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/EMS_Gauge_Set_Parameter_Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/EMS_Phase_Name_Controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -685,31 +675,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/EMS_Set_Parameters_Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/EMS_time_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/EMS_User_Controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/EMS_Gauge_Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -727,22 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/services/Auth_Gate.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
@@ -751,27 +704,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/EMS_Auth_Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/EMS_Gauge_Range_Controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="45" column="1" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
-          <folding>
-            <marker date="1475433199009" expanded="true" signature="394:495" placeholder="select max(r... power_measurement" />
-            <marker date="1475433199009" expanded="true" signature="694:795" placeholder="select avg(r... power_measurement" />
-            <marker date="1475433199009" expanded="true" signature="994:1070" placeholder="select sum(r... power_measurement" />
-            <marker date="1475433199009" expanded="true" signature="1246:1349" placeholder="select sum(r... current_measurement" />
-            <marker date="1475433199009" expanded="true" signature="1547:1650" placeholder="select avg(r... current_measurement" />
-            <marker date="1475433199009" expanded="true" signature="1847:1925" placeholder="select sum(r... current_measurement" />
-            <marker date="1475433199009" expanded="true" signature="2101:2244" placeholder="select max((... power_measurement" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -779,11 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
           <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <marker date="1475780446190" expanded="true" signature="270:336" placeholder="select id fr... users" />
-            <marker date="1475780446190" expanded="true" signature="504:547" placeholder="select permi... users" />
-            <marker date="1475780446190" expanded="true" signature="705:778" placeholder="insert into users... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -791,15 +722,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-663">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -807,92 +729,142 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/power_measurement.php">
+    <entry file="file://$PROJECT_DIR$/config/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
-          <folding />
+        <state relative-caret-position="102">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/EMS_Chart_Range_Controller.php">
+    <entry file="file://$PROJECT_DIR$/controllers/EMS_Auth_Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
-          <folding />
+        <state relative-caret-position="255">
+          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/EMS_Gauge_Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="25" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/EMS_Gauge_Set_Parameter_Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/EMS_Set_Parameters_Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <marker date="1477328469687" expanded="true" signature="370:421" placeholder="update param... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/EMS_Table_Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
+        <state relative-caret-position="476">
           <caret line="33" column="71" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/EMS_time_controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <marker date="1474069188489" expanded="true" signature="275:336" placeholder="select disti... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/Navbar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="53" column="8" selection-start-line="52" selection-start-column="4" selection-end-line="55" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="46" column="19" selection-start-line="46" selection-start-column="10" selection-end-line="47" selection-end-column="112" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/services/EMS_DB.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="447" column="178" selection-start-line="447" selection-start-column="38" selection-end-line="447" selection-end-column="178" />
+        <state relative-caret-position="237">
+          <caret line="344" column="20" selection-start-line="344" selection-start-column="20" selection-end-line="344" selection-end-column="20" />
           <folding>
             <marker date="1483895260919" expanded="true" signature="917:1005" placeholder="select resul... power_measurement" />
             <marker date="1483895260919" expanded="true" signature="1449:1539" placeholder="select resul... current_measurement" />
-            <marker date="1483895260919" expanded="true" signature="3427:3473" placeholder="select disti... power_measurement" />
+            <marker date="1483895260919" expanded="true" signature="3427:3473" placeholder="select disti... phase_name" />
             <marker date="1483895260919" expanded="true" signature="3580:3697" placeholder="select * fro... t_time" />
-            <marker date="1483895260919" expanded="true" signature="3596:3652" placeholder="select disti... " />
             <marker date="1483895260919" expanded="true" signature="3596:3664" placeholder="select disti... " />
-            <marker date="1483895260919" expanded="true" signature="3825:3926" placeholder="select * fro... result" />
             <marker date="1483895260919" expanded="true" signature="3825:3956" placeholder="select * fro... result" />
-            <marker date="1483895260919" expanded="true" signature="3825:3968" placeholder="select * fro... result" />
-            <marker date="1483895260919" expanded="true" signature="3840:3900" placeholder="select resul... power_measurement" />
-            <marker date="1483895260919" expanded="true" signature="3840:3925" placeholder="select resul... power_measurement" />
-            <marker date="1483895260919" expanded="true" signature="4200:4246" placeholder="select disti... current_measurement" />
+            <marker date="1483895260919" expanded="true" signature="3840:3925" placeholder="select resul... " />
+            <marker date="1483895260919" expanded="true" signature="4200:4246" placeholder="select disti... phase_name" />
             <marker date="1483895260919" expanded="true" signature="4353:4471" placeholder="select * fro... t_time" />
-            <marker date="1483895260919" expanded="true" signature="4368:4426" placeholder="select disti... " />
             <marker date="1483895260919" expanded="true" signature="4368:4438" placeholder="select disti... " />
-            <marker date="1483895260919" expanded="true" signature="4602:4703" placeholder="select * fro... result" />
-            <marker date="1483895260919" expanded="true" signature="4602:4705" placeholder="select * fro... result" />
             <marker date="1483895260919" expanded="true" signature="4602:4735" placeholder="select * fro... result" />
-            <marker date="1483895260919" expanded="true" signature="4617:4631" placeholder="select resul... " />
-            <marker date="1483895260919" expanded="true" signature="4617:4679" placeholder="select resul... current_measurement" />
-            <marker date="1483895260919" expanded="true" signature="4617:4703" placeholder="select resul... current_measurement" />
-            <marker date="1483895260919" expanded="true" signature="5076:5112" placeholder="select disti... power_measurement" />
+            <marker date="1483895260919" expanded="true" signature="4617:4704" placeholder="select resul... " />
             <marker date="1483895260919" expanded="true" signature="5076:5122" placeholder="select disti... phase_name" />
             <marker date="1483895260919" expanded="true" signature="5222:5319" placeholder="select disti... " />
             <marker date="1483895260919" expanded="true" signature="5474:5562" placeholder="select resul... power_measurement" />
             <marker date="1483895260919" expanded="true" signature="5877:5922" placeholder="select disti... phase_name" />
             <marker date="1483895260919" expanded="true" signature="6022:6119" placeholder="select disti... " />
-            <marker date="1483895260919" expanded="true" signature="6274:6438" placeholder="select resul... power_measurement" />
+            <marker date="1483895260919" expanded="true" signature="6274:6438" placeholder="select (resu... power_measurement" />
             <marker date="1483895260919" expanded="true" signature="6749:6820" placeholder="select disti... current_measurement" />
             <marker date="1483895260919" expanded="true" signature="6920:7019" placeholder="select disti... " />
             <marker date="1483895260919" expanded="true" signature="7174:7264" placeholder="select resul... current_measurement" />
             <marker date="1483895260919" expanded="true" signature="7608:7918" placeholder="select DISTI... " />
-            <marker date="1483895260919" expanded="true" signature="7615:7918" placeholder="select conca... power_measurement" />
             <marker date="1483895260919" expanded="true" signature="8370:8510" placeholder="select DISTI... " />
-            <marker date="1483895260919" expanded="true" signature="8867:8884" placeholder="select disti... ${$table}" />
-            <marker date="1483895260919" expanded="true" signature="8867:8894" placeholder="select name phase_name" />
             <marker date="1483895260919" expanded="true" signature="8867:8916" placeholder="select name phase_name" />
             <marker date="1483895260919" expanded="true" signature="9924:9985" placeholder="update phase... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/power_measurement_of_range.php">
+    <entry file="file://$PROJECT_DIR$/controllers/EMS_Chart_Range_Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="149" column="16" selection-start-line="149" selection-start-column="16" selection-end-line="151" selection-end-column="18" />
+        <state relative-caret-position="609">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/power_measurement.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="830">
+          <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/current_measurement.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="-1071">
           <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="96" />
           <folding />
         </state>
@@ -900,9 +872,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/current_measurement_of_range.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="147" column="18" selection-start-line="147" selection-start-column="18" selection-end-line="147" selection-end-column="18" />
+        <state relative-caret-position="-833">
+          <caret line="118" column="24" selection-start-line="118" selection-start-column="24" selection-end-line="118" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/power_measurement_of_range.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="26" column="78" selection-start-line="26" selection-start-column="78" selection-end-line="26" selection-end-column="78" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#0;n#tr#0;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#tr#0;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#4;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#5;n#tr#1;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#0;n#tr#2;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#3;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#3;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#3;n#table#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

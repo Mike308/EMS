@@ -41,7 +41,7 @@ $permission = $auth->get_user_perm();
         google.load("visualization", "1", {packages:["gauge"]});
         google.setOnLoadCallback(function(){
             
-        //  get_parameter_from_url("controllers/EMS_Gauge_Set_Parameter_Controller.php?id=max_Value_A");
+
             var max_A = getValue("controllers/EMS_Gauge_Set_Parameter_Controller.php?id=max_Value_A");
             var minor_tick_A = getValue("controllers/EMS_Gauge_Set_Parameter_Controller.php?id=minor_tick_A");
             var max_VA = getValue("controllers/EMS_Gauge_Set_Parameter_Controller.php?id=max_Value_VA");
@@ -132,12 +132,7 @@ $permission = $auth->get_user_perm();
 
             return value;
 
-//            $.each(value.data,function (index,value) {
-//
-//                param = value.data;
-//                console.log(param);
-//
-//            });
+
 
         }
 
