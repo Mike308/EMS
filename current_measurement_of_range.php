@@ -39,19 +39,24 @@ $end = $_GET['end'];
         google.load("visualization", "1", {packages:["gauge"]});
         google.setOnLoadCallback(function(){
 
-            drawChart("A","controllers/EMS_Gauge_Range_Controller.php?cmd=3&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_div");
-            drawChart("A","controllers/EMS_Gauge_Range_Controller.php?cmd=4&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_avg_div");
-            drawChart("A","controllers/EMS_Gauge_Range_Controller.php?cmd=3&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_div");
-            drawChart("A","controllers/EMS_Gauge_Range_Controller.php?cmd=4&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_avg_div");
-            drawChart("A","controllers/EMS_Gauge_Range_Controller.php?cmd=3&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_div");
-            drawChart("A","controllers/EMS_Gauge_Range_Controller.php?cmd=4&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_avg_div");
-            drawChart("A","controllers/EMS_Gauge_Range_Controller.php?cmd=5&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","sum_div");
+            var max_A = getValue("controllers/EMS_Gauge_Set_Parameter_Controller.php?id=max_Value_A");
+            var minor_tick_A = getValue("controllers/EMS_Gauge_Set_Parameter_Controller.php?id=minor_tick_A");
+            console.log("Value "+max_A);
+
+
+            drawChart("A","controllers/EMS_Gauge_Range_Controller.php?cmd=3&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_div",max_A,minor_tick_A);
+            drawChart("A","controllers/EMS_Gauge_Range_Controller.php?cmd=4&phase_no=1&start=<?php echo $start?>&end=<?php echo $end?>","l1_avg_div",max_A,minor_tick_A);
+            drawChart("A","controllers/EMS_Gauge_Range_Controller.php?cmd=3&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_div",max_A,minor_tick_A);
+            drawChart("A","controllers/EMS_Gauge_Range_Controller.php?cmd=4&phase_no=2&start=<?php echo $start?>&end=<?php echo $end?>","l2_avg_div",max_A,minor_tick_A);
+            drawChart("A","controllers/EMS_Gauge_Range_Controller.php?cmd=3&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_div",max_A,minor_tick_A);
+            drawChart("A","controllers/EMS_Gauge_Range_Controller.php?cmd=4&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","l3_avg_div",max_A,minor_tick_A);
+           // drawChart("A","controllers/EMS_Gauge_Range_Controller.php?cmd=5&phase_no=3&start=<?php echo $start?>&end=<?php echo $end?>","sum_div",max_A,minor_tick_A);
 
 
         });
 
 
-        function drawChart(label,url,div_id) {
+        function drawChart(label,url,div_id,max_value,minor_ticks) {
 
             var chart_data = google.visualization.arrayToDataTable([
                 ['Label', 'Value'],
@@ -63,9 +68,8 @@ $end = $_GET['end'];
 
             var options = {
                 width: 150, height: 150,
-                redFrom: 25, redTo: 30,
-                yellowFrom:15, yellowTo: 25,
-                minorTicks: 0.5, max:30
+
+                minorTicks: minor_ticks, max: max_value
             };
 
             var chart = new google.visualization.Gauge(document.getElementById(div_id));
@@ -74,24 +78,36 @@ $end = $_GET['end'];
             chart.draw(chart_data, options);
 
 
+            setInterval(function () {
+
+                $.getJSON(url, function (data) {
 
 
-
-            $.getJSON(url,function(data) {
-
-                console.log(url);
-
-                $.each(data.data, function(index,value){
+                    $.each(data.data, function (index, value) {
 
 
+                        chart_data.setValue(0, 1, value.data);
+                        chart.draw(chart_data, options);
 
-                    chart_data.setValue(0,1,value.data);
-                    chart.draw(chart_data,options);
+                    });
 
                 });
+            }, 1000);
 
-            });
+        }
 
+
+
+        function getValue(my_url){
+
+            var param = 0;
+
+            var value= $.ajax({
+                url: my_url,
+                async: false
+            }).responseText;
+
+            return value;
 
 
 
@@ -211,7 +227,7 @@ $end = $_GET['end'];
                 <tr>
                     <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Maksymalne natężenie prądu dla: <br>  {{x.name}} </th>
                     <th style="padding: 5px; text-align: center" align="center" ng-repeat = "x in names"> Średnie natężenie prądu dla: <br>  {{x.name}} </th>
-                    <th style="padding: 5px; text-align: center" align="center"> Całkowite nateżenie prądu <br> <br></th>
+
                 </tr>
 
                 <tr>
@@ -221,7 +237,7 @@ $end = $_GET['end'];
                     <td style="padding: 5px" align="center"> <div id = "l1_avg_div"> </div> </td>
                     <td style="padding: 5px" align="center"> <div id = "l2_avg_div"> </div> </td>
                     <td style="padding: 5px" align="center"> <div id = "l3_avg_div"> </div> </td>
-                    <td style="padding: 5px" align="center"> <div id = "sum_div"> </div> </td>
+
                 </tr>
 
 
