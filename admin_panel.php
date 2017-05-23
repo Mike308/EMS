@@ -159,7 +159,7 @@ $permission = $auth->get_user_perm();
 
                   <th style="padding: 5px">
                       <div class="panel-group" align="center">
-                          <div class="panel panel-primary" style="width: 350px">
+                          <div class="panel panel-info" style="width: 350px">
                               <div class="panel-heading" style="width: 350px; color: white" > Analiza poboru mocy  </div>
                               <div class="panel-body">
 
